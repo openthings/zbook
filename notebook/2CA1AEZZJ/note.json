@@ -1,0 +1,604 @@
+{
+  "paragraphs": [
+    {
+      "text": "ls -l",
+      "user": "anonymous",
+      "dateUpdated": "Mar 16, 2017 8:18:07 AM",
+      "config": {
+        "colWidth": 6.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 86.35000610351562,
+              "optionOpen": false
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "total 27992\ndrwxr-xr-x  2 root root     4096 Feb 25 00:18 bin\ndrwxr-xr-x  2 root root     4096 Feb 26 13:32 conf\ndrwxr-xr-x 27 root root     4096 Mar  4 07:32 interpreter\ndrwxr-xr-x  4 root root    12288 Feb 25 00:48 lib\n-rw-r--r--  1 root root    15569 Feb 25 00:18 LICENSE\ndrwxr-xr-x  2 root root     4096 Feb 25 00:18 licenses\n-rw-r--r--  1 root root     7950 Mar  3 10:50 lines.html\ndrwxr-xr-x 39 root root     4096 Mar  4 07:31 local-repo\ndrwxr-xr-x  2 root root     4096 Mar 16 08:18 logs\ndrwxr-xr-x  3 root root     4096 Mar  3 15:18 node_modules\ndrwxr-xr-x 26 root root     4096 Mar  3 14:44 notebook\n-rw-r--r--  1 root root      253 Feb 25 00:18 NOTICE\n-rw-r--r--  1 root root     1324 Feb 25 00:18 README.md\ndrwxr-xr-x  2 root root     4096 Mar 16 08:18 run\ndrwxr-xr-x  2 root root     4096 Feb 25 02:52 spark-warehouse\ndrwxr-xr-x  3 root root     4096 Mar 16 08:17 webapps\n-rw-r--r--  1 root root 28570936 Feb 25 00:43 zeppelin-web-0.7.0.war\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1487988423796_1970645493",
+      "id": "20170225-020703_708303197",
+      "dateCreated": "Feb 25, 2017 2:07:03 AM",
+      "dateStarted": "Mar 16, 2017 8:18:08 AM",
+      "dateFinished": "Mar 16, 2017 8:18:10 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "cat ./conf/interpreter.json",
+      "user": "anonymous",
+      "dateUpdated": "Mar 16, 2017 8:18:39 AM",
+      "config": {
+        "colWidth": 5.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 1041.1500244140625,
+              "optionOpen": false
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sh",
+        "editorHide": true,
+        "tableHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "{\n  \"interpreterSettings\": {\n    \"2C95MKHGJ\": {\n      \"id\": \"2C95MKHGJ\",\n      \"name\": \"jdbc\",\n      \"group\": \"jdbc\",\n      \"properties\": {\n        \"default.password\": \"\",\n        \"zeppelin.jdbc.auth.type\": \"\",\n        \"common.max_count\": \"1000\",\n        \"zeppelin.jdbc.principal\": \"\",\n        \"default.user\": \"gpadmin\",\n        \"default.url\": \"jdbc:postgresql://localhost:5432/\",\n        \"default.driver\": \"org.postgresql.Driver\",\n        \"zeppelin.jdbc.keytab.location\": \"\",\n        \"zeppelin.jdbc.concurrent.use\": \"true\",\n        \"zeppelin.jdbc.concurrent.max_connection\": \"10\"\n      },\n      \"status\": \"READY\",\n      \"interpreterGroup\": [\n        {\n          \"name\": \"sql\",\n          \"class\": \"org.apache.zeppelin.jdbc.JDBCInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"language\": \"sql\",\n            \"editOnDblClick\": false\n          }\n        }\n      ],\n      \"dependencies\": [],\n      \"option\": {\n        \"remote\": true,\n        \"port\": -1,\n        \"perNote\": \"shared\",\n        \"perUser\": \"shared\",\n        \"isExistingProcess\": false,\n        \"setPermission\": false,\n        \"users\": [],\n        \"isUserImpersonate\": false\n      }\n    },\n    \"2CAM6X5NB\": {\n      \"id\": \"2CAM6X5NB\",\n      \"name\": \"md\",\n      \"group\": \"md\",\n      \"properties\": {\n        \"zeppelin.interpreter.localRepo\": \"/usr/zeppelin/local-repo/2CAM6X5NB\",\n        \"markdown.parser.type\": \"pegdown\"\n      },\n      \"status\": \"READY\",\n      \"interpreterGroup\": [\n        {\n          \"name\": \"md\",\n          \"class\": \"org.apache.zeppelin.markdown.Markdown\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"language\": \"markdown\",\n            \"editOnDblClick\": true\n          }\n        }\n      ],\n      \"dependencies\": [],\n      \"option\": {\n        \"remote\": true,\n        \"port\": -1,\n        \"perNote\": \"shared\",\n        \"perUser\": \"shared\",\n        \"isExistingProcess\": false,\n        \"setPermission\": false,\n        \"users\": [],\n        \"isUserImpersonate\": false\n      }\n    },\n    \"2CAF88TQ9\": {\n      \"id\": \"2CAF88TQ9\",\n      \"name\": \"elasticsearch\",\n      \"group\": \"elasticsearch\",\n      \"properties\": {\n        \"elasticsearch.port\": \"9300\",\n        \"elasticsearch.result.size\": \"10\",\n        \"elasticsearch.basicauth.password\": \"\",\n        \"elasticsearch.cluster.name\": \"elasticsearch\",\n        \"elasticsearch.host\": \"localhost\",\n        \"elasticsearch.basicauth.username\": \"\",\n        \"elasticsearch.client.type\": \"transport\"\n      },\n      \"status\": \"READY\",\n      \"interpreterGroup\": [\n        {\n          \"name\": \"elasticsearch\",\n          \"class\": \"org.apache.zeppelin.elasticsearch.ElasticsearchInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"editOnDblClick\": false\n          }\n        }\n      ],\n      \"dependencies\": [],\n      \"option\": {\n        \"remote\": true,\n        \"port\": -1,\n        \"perNote\": \"shared\",\n        \"perUser\": \"shared\",\n        \"isExistingProcess\": false,\n        \"setPermission\": false,\n        \"users\": [],\n        \"isUserImpersonate\": false\n      }\n    },\n    \"2CB66CEAD\": {\n      \"id\": \"2CB66CEAD\",\n      \"name\": \"spark\",\n      \"group\": \"spark\",\n      \"properties\": {\n        \"spark.cores.max\": \"\",\n        \"zeppelin.spark.printREPLOutput\": \"true\",\n        \"master\": \"local[*]\",\n        \"zeppelin.spark.maxResult\": \"1000\",\n        \"zeppelin.dep.localrepo\": \"local-repo\",\n        \"spark.app.name\": \"Zeppelin\",\n        \"spark.executor.memory\": \"\",\n        \"zeppelin.spark.sql.stacktrace\": \"false\",\n        \"zeppelin.spark.importImplicit\": \"true\",\n        \"zeppelin.interpreter.localRepo\": \"/usr/zeppelin/local-repo/2CB66CEAD\",\n        \"zeppelin.spark.useHiveContext\": \"true\",\n        \"args\": \"\",\n        \"zeppelin.spark.concurrentSQL\": \"false\",\n        \"zeppelin.pyspark.python\": \"python\",\n        \"zeppelin.dep.additionalRemoteRepository\": \"spark-packages,http://dl.bintray.com/spark-packages/maven,false;\"\n      },\n      \"status\": \"READY\",\n      \"interpreterGroup\": [\n        {\n          \"name\": \"spark\",\n          \"class\": \"org.apache.zeppelin.spark.SparkInterpreter\",\n          \"defaultInterpreter\": true,\n          \"editor\": {\n            \"language\": \"scala\",\n            \"editOnDblClick\": false\n          }\n        },\n        {\n          \"name\": \"sql\",\n          \"class\": \"org.apache.zeppelin.spark.SparkSqlInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"language\": \"sql\",\n            \"editOnDblClick\": false\n          }\n        },\n        {\n          \"name\": \"dep\",\n          \"class\": \"org.apache.zeppelin.spark.DepInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"language\": \"scala\",\n            \"editOnDblClick\": false\n          }\n        },\n        {\n          \"name\": \"pyspark\",\n          \"class\": \"org.apache.zeppelin.spark.PySparkInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"language\": \"python\",\n            \"editOnDblClick\": false\n          }\n        }\n      ],\n      \"dependencies\": [],\n      \"option\": {\n        \"remote\": true,\n        \"port\": -1,\n        \"perNote\": \"shared\",\n        \"perUser\": \"shared\",\n        \"isExistingProcess\": false,\n        \"setPermission\": false,\n        \"users\": [],\n        \"isUserImpersonate\": false\n      }\n    },\n    \"2CB3CXC5U\": {\n      \"id\": \"2CB3CXC5U\",\n      \"name\": \"hbase\",\n      \"group\": \"hbase\",\n      \"properties\": {\n        \"zeppelin.hbase.test.mode\": \"false\",\n        \"hbase.ruby.sources\": \"lib/ruby\",\n        \"hbase.home\": \"/usr/lib/hbase/\"\n      },\n      \"status\": \"READY\",\n      \"interpreterGroup\": [\n        {\n          \"name\": \"hbase\",\n          \"class\": \"org.apache.zeppelin.hbase.HbaseInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"editOnDblClick\": false\n          }\n        }\n      ],\n      \"dependencies\": [],\n      \"option\": {\n        \"remote\": true,\n        \"port\": -1,\n        \"perNote\": \"shared\",\n        \"perUser\": \"shared\",\n        \"isExistingProcess\": false,\n        \"setPermission\": false,\n        \"users\": [],\n        \"isUserImpersonate\": false\n      }\n    },\n    \"2CCM15GZZ\": {\n      \"id\": \"2CCM15GZZ\",\n      \"name\": \"sh\",\n      \"group\": \"sh\",\n      \"properties\": {\n        \"zeppelin.shell.keytab.location\": \"\",\n        \"shell.command.timeout.millisecs\": \"600000\",\n        \"zeppelin.interpreter.localRepo\": \"/usr/zeppelin/local-repo/2CCM15GZZ\",\n        \"zeppelin.shell.principal\": \"\",\n        \"zeppelin.shell.auth.type\": \"\"\n      },\n      \"status\": \"READY\",\n      \"interpreterGroup\": [\n        {\n          \"name\": \"sh\",\n          \"class\": \"org.apache.zeppelin.shell.ShellInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"language\": \"sh\",\n            \"editOnDblClick\": false\n          }\n        }\n      ],\n      \"dependencies\": [],\n      \"option\": {\n        \"remote\": true,\n        \"port\": -1,\n        \"perNote\": \"shared\",\n        \"perUser\": \"shared\",\n        \"isExistingProcess\": false,\n        \"setPermission\": false,\n        \"users\": [],\n        \"isUserImpersonate\": false\n      }\n    },\n    \"2C9PNCCYW\": {\n      \"id\": \"2C9PNCCYW\",\n      \"name\": \"python\",\n      \"group\": \"python\",\n      \"properties\": {\n        \"zeppelin.python\": \"python\",\n        \"zeppelin.python.maxResult\": \"1000\",\n        \"zeppelin.interpreter.localRepo\": \"/usr/zeppelin/local-repo/2C9PNCCYW\"\n      },\n      \"status\": \"READY\",\n      \"interpreterGroup\": [\n        {\n          \"name\": \"python\",\n          \"class\": \"org.apache.zeppelin.python.PythonInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"language\": \"python\",\n            \"editOnDblClick\": false\n          }\n        },\n        {\n          \"name\": \"sql\",\n          \"class\": \"org.apache.zeppelin.python.PythonInterpreterPandasSql\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"language\": \"sql\",\n            \"editOnDblClick\": false\n          }\n        },\n        {\n          \"name\": \"conda\",\n          \"class\": \"org.apache.zeppelin.python.PythonCondaInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"language\": \"sh\",\n            \"editOnDblClick\": false\n          }\n        },\n        {\n          \"name\": \"docker\",\n          \"class\": \"org.apache.zeppelin.python.PythonDockerInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"language\": \"sh\",\n            \"editOnDblClick\": false\n          }\n        }\n      ],\n      \"dependencies\": [],\n      \"option\": {\n        \"remote\": true,\n        \"port\": -1,\n        \"perNote\": \"shared\",\n        \"perUser\": \"shared\",\n        \"isExistingProcess\": false,\n        \"setPermission\": false,\n        \"users\": [],\n        \"isUserImpersonate\": false\n      }\n    },\n    \"2C9WG4M62\": {\n      \"id\": \"2C9WG4M62\",\n      \"name\": \"angular\",\n      \"group\": \"angular\",\n      \"properties\": {},\n      \"status\": \"READY\",\n      \"interpreterGroup\": [\n        {\n          \"name\": \"angular\",\n          \"class\": \"org.apache.zeppelin.angular.AngularInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"editOnDblClick\": true\n          }\n        }\n      ],\n      \"dependencies\": [],\n      \"option\": {\n        \"remote\": true,\n        \"port\": -1,\n        \"perNote\": \"shared\",\n        \"perUser\": \"shared\",\n        \"isExistingProcess\": false,\n        \"setPermission\": false,\n        \"users\": [],\n        \"isUserImpersonate\": false\n      }\n    },\n    \"2CCJXAJ4A\": {\n      \"id\": \"2CCJXAJ4A\",\n      \"name\": \"psql\",\n      \"group\": \"psql\",\n      \"properties\": {\n        \"postgresql.password\": \"\",\n        \"postgresql.driver.name\": \"org.postgresql.Driver\",\n        \"postgresql.max.result\": \"1000\",\n        \"postgresql.url\": \"jdbc:postgresql://localhost:5432/\",\n        \"postgresql.user\": \"gpadmin\"\n      },\n      \"status\": \"READY\",\n      \"interpreterGroup\": [\n        {\n          \"name\": \"sql\",\n          \"class\": \"org.apache.zeppelin.postgresql.PostgreSqlInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {}\n        }\n      ],\n      \"dependencies\": [],\n      \"option\": {\n        \"remote\": true,\n        \"port\": -1,\n        \"perNote\": \"shared\",\n        \"perUser\": \"shared\",\n        \"isExistingProcess\": false,\n        \"setPermission\": false,\n        \"users\": [],\n        \"isUserImpersonate\": false\n      }\n    }\n  },\n  \"interpreterBindings\": {\n    \"2CA1AEZZJ\": [\n      \"2CCM15GZZ\",\n      \"2CB66CEAD\",\n      \"2CAM6X5NB\",\n      \"2C9WG4M62\",\n      \"2CCJXAJ4A\",\n      \"2C9PNCCYW\",\n      \"2CAF88TQ9\",\n      \"2C95MKHGJ\",\n      \"2CB3CXC5U\"\n    ],\n    \"2C8WZ7HUD\": [\n      \"2C9PNCCYW\",\n      \"2CB66CEAD\",\n      \"2CAM6X5NB\",\n      \"2C9WG4M62\",\n      \"2CCM15GZZ\",\n      \"2CCJXAJ4A\",\n      \"2CAF88TQ9\",\n      \"2C95MKHGJ\",\n      \"2CB3CXC5U\"\n    ],\n    \"2BTRWA9EV\": [\n      \"2CB66CEAD\",\n      \"2CAM6X5NB\",\n      \"2C9WG4M62\",\n      \"2CCM15GZZ\",\n      \"2CCJXAJ4A\",\n      \"2C9PNCCYW\",\n      \"2CAF88TQ9\",\n      \"2C95MKHGJ\",\n      \"2CB3CXC5U\"\n    ],\n    \"2C2AUG798\": [\n      \"2CB66CEAD\",\n      \"2CAM6X5NB\",\n      \"2C9WG4M62\",\n      \"2CCM15GZZ\",\n      \"2CCJXAJ4A\",\n      \"2C9PNCCYW\",\n      \"2CAF88TQ9\",\n      \"2C95MKHGJ\",\n      \"2CB3CXC5U\"\n    ],\n    \"2CAFPQHP3\": [\n      \"2C9PNCCYW\",\n      \"2CB66CEAD\",\n      \"2CAM6X5NB\",\n      \"2C9WG4M62\",\n      \"2CCM15GZZ\",\n      \"2CCJXAJ4A\",\n      \"2CAF88TQ9\",\n      \"2C95MKHGJ\",\n      \"2CB3CXC5U\"\n    ],\n    \"2CAKCXMGU\": [\n      \"2C9PNCCYW\",\n      \"2CB66CEAD\",\n      \"2CAM6X5NB\",\n      \"2C9WG4M62\",\n      \"2CCM15GZZ\",\n      \"2CCJXAJ4A\",\n      \"2CAF88TQ9\",\n      \"2C95MKHGJ\",\n      \"2CB3CXC5U\"\n    ],\n    \"2A94M5J1Z\": [\n      \"2CB66CEAD\",\n      \"2CAM6X5NB\",\n      \"2C9WG4M62\",\n      \"2CCM15GZZ\",\n      \"2CCJXAJ4A\",\n      \"2C9PNCCYW\",\n      \"2CAF88TQ9\",\n      \"2C95MKHGJ\",\n      \"2CB3CXC5U\"\n    ]\n  },\n  \"interpreterRepositories\": [\n    {\n      \"id\": \"central\",\n      \"type\": \"default\",\n      \"url\": \"http://repo1.maven.org/maven2/\",\n      \"releasePolicy\": {\n        \"enabled\": true,\n        \"updatePolicy\": \"daily\",\n        \"checksumPolicy\": \"warn\"\n      },\n      \"snapshotPolicy\": {\n        \"enabled\": true,\n        \"updatePolicy\": \"daily\",\n        \"checksumPolicy\": \"warn\"\n      },\n      \"mirroredRepositories\": [],\n      \"repositoryManager\": false\n    },\n    {\n      \"id\": \"local\",\n      \"type\": \"default\",\n      \"url\": \"file:///root/.m2/repository\",\n      \"releasePolicy\": {\n        \"enabled\": true,\n        \"updatePolicy\": \"daily\",\n        \"checksumPolicy\": \"warn\"\n      },\n      \"snapshotPolicy\": {\n        \"enabled\": true,\n        \"updatePolicy\": \"daily\",\n        \"checksumPolicy\": \"warn\"\n      },\n      \"mirroredRepositories\": [],\n      \"repositoryManager\": false\n    }\n  ]\n}"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1487988434529_1690963691",
+      "id": "20170225-020714_1606608675",
+      "dateCreated": "Feb 25, 2017 2:07:14 AM",
+      "dateStarted": "Feb 26, 2017 1:35:01 PM",
+      "dateFinished": "Feb 26, 2017 1:35:01 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "npm -v",
+      "user": "anonymous",
+      "dateUpdated": "Mar 16, 2017 8:24:33 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "1.4.21\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1489652356833_188162695",
+      "id": "20170316-081916_720247951",
+      "dateCreated": "Mar 16, 2017 8:19:16 AM",
+      "dateStarted": "Mar 16, 2017 8:24:33 AM",
+      "dateFinished": "Mar 16, 2017 8:24:33 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "./bin/install-interpreter.sh --list",
+      "user": "anonymous",
+      "dateUpdated": "Mar 4, 2017 7:26:06 AM",
+      "config": {
+        "colWidth": 6.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize\u003d512m; support was removed in 8.0\nJava HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize\u003d512m; support was removed in 8.0\nJava HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize\u003d512m; support was removed in 8.0\nSLF4J: Class path contains multiple SLF4J bindings.\nSLF4J: Found binding in [jar:file:/usr/zeppelin/lib/interpreter/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/zeppelin/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.\nSLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]\nalluxio\t\t\tAlluxio interpreter\nangular\t\t\tHTML and AngularJS view rendering\nbeam\t\t\tBeam interpreter\nbigquery\t\t\tBigQuery interpreter\ncassandra\t\t\tCassandra interpreter built with Scala 2.11\nelasticsearch\t\t\tElasticsearch interpreter\nfile\t\t\tHDFS file interpreter\nflink\t\t\tFlink interpreter built with Scala 2.11\nhbase\t\t\tHbase interpreter\nignite\t\t\tIgnite interpreter built with Scala 2.11\njdbc\t\t\tJdbc interpreter\nkylin\t\t\tKylin interpreter\nlens\t\t\tLens interpreter\nlivy\t\t\tLivy interpreter\nmd\t\t\tMarkdown support\npig\t\t\tPig interpreter\npostgresql\t\t\tPostgresql interpreter\npython\t\t\tPython interpreter\nscio\t\t\tScio interpreter\nshell\t\t\tShell command\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488164368139_777272613",
+      "id": "20170227-025928_144074158",
+      "dateCreated": "Feb 27, 2017 2:59:28 AM",
+      "dateStarted": "Mar 4, 2017 7:26:06 AM",
+      "dateFinished": "Mar 4, 2017 7:26:09 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "./bin/install-interpreter.sh --all",
+      "user": "anonymous",
+      "dateUpdated": "Mar 4, 2017 7:27:28 AM",
+      "config": {
+        "colWidth": 6.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 324.6500244140625,
+              "optionOpen": false
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize\u003d512m; support was removed in 8.0\nJava HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize\u003d512m; support was removed in 8.0\nJava HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize\u003d512m; support was removed in 8.0\nSLF4J: Class path contains multiple SLF4J bindings.\nSLF4J: Found binding in [jar:file:/usr/zeppelin/lib/interpreter/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/usr/zeppelin/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.\nSLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]\nDirectory /usr/zeppelin/interpreter/alluxio already exists. Skipping\nDirectory /usr/zeppelin/interpreter/angular already exists. Skipping\nInstall beam(org.apache.zeppelin:zeppelin-beam:0.7.0) to /usr/zeppelin/interpreter/beam ... \nInterpreter beam installed under /usr/zeppelin/interpreter/beam.\nInstall bigquery(org.apache.zeppelin:zeppelin-bigquery:0.7.0) to /usr/zeppelin/interpreter/bigquery ... \nInterpreter bigquery installed under /usr/zeppelin/interpreter/bigquery.\nInstall cassandra(org.apache.zeppelin:zeppelin-cassandra_2.11:0.7.0) to /usr/zeppelin/interpreter/cassandra ... \nInterpreter cassandra installed under /usr/zeppelin/interpreter/cassandra.\nDirectory /usr/zeppelin/interpreter/elasticsearch already exists. Skipping\nInstall file(org.apache.zeppelin:zeppelin-file:0.7.0) to /usr/zeppelin/interpreter/file ... \nInterpreter file installed under /usr/zeppelin/interpreter/file.\nInstall flink(org.apache.zeppelin:zeppelin-flink_2.11:0.7.0) to /usr/zeppelin/interpreter/flink ... \nInterpreter flink installed under /usr/zeppelin/interpreter/flink.\nDirectory /usr/zeppelin/interpreter/hbase already exists. Skipping\nInstall ignite(org.apache.zeppelin:zeppelin-ignite_2.11:0.7.0) to /usr/zeppelin/interpreter/ignite ... \nInterpreter ignite installed under /usr/zeppelin/interpreter/ignite.\nDirectory /usr/zeppelin/interpreter/jdbc already exists. Skipping\nInstall kylin(org.apache.zeppelin:zeppelin-kylin:0.7.0) to /usr/zeppelin/interpreter/kylin ... \nInterpreter kylin installed under /usr/zeppelin/interpreter/kylin.\nInstall lens(org.apache.zeppelin:zeppelin-lens:0.7.0) to /usr/zeppelin/interpreter/lens ... \nInterpreter lens installed under /usr/zeppelin/interpreter/lens.\nInstall livy(org.apache.zeppelin:zeppelin-livy:0.7.0) to /usr/zeppelin/interpreter/livy ... \nInterpreter livy installed under /usr/zeppelin/interpreter/livy.\nDirectory /usr/zeppelin/interpreter/md already exists. Skipping\nInstall pig(org.apache.zeppelin:zeppelin-pig:0.7.0) to /usr/zeppelin/interpreter/pig ... \nInterpreter pig installed under /usr/zeppelin/interpreter/pig.\nInstall postgresql(org.apache.zeppelin:zeppelin-postgresql:0.7.0) to /usr/zeppelin/interpreter/postgresql ... \nInterpreter postgresql installed under /usr/zeppelin/interpreter/postgresql.\nDirectory /usr/zeppelin/interpreter/python already exists. Skipping\nInstall scio(org.apache.zeppelin:zeppelin-scio_2.11:0.7.0) to /usr/zeppelin/interpreter/scio ... \nInterpreter scio installed under /usr/zeppelin/interpreter/scio.\nInstall shell(org.apache.zeppelin:zeppelin-shell:0.7.0) to /usr/zeppelin/interpreter/shell ... \nInterpreter shell installed under /usr/zeppelin/interpreter/shell.\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488159928923_178087833",
+      "id": "20170227-014528_392075433",
+      "dateCreated": "Feb 27, 2017 1:45:28 AM",
+      "dateStarted": "Mar 4, 2017 7:27:28 AM",
+      "dateFinished": "Mar 4, 2017 7:32:11 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\n\nprintln(\n\"\"\"%angular\n  \u003cdiv ng-include\u003d\"\u0027app/home/notebook.html\u0027\"\u003e\u003c/div\u003e\n\"\"\")",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 3:20:20 PM",
+      "config": {
+        "colWidth": 6.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "ANGULAR",
+            "data": "  \u003cdiv ng-include\u003d\"\u0027app/home/notebook.html\u0027\"\u003e\u003c/div\u003e\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488166389887_1226154154",
+      "id": "20170227-033309_1965045897",
+      "dateCreated": "Feb 27, 2017 3:33:09 AM",
+      "dateStarted": "Mar 3, 2017 3:20:20 PM",
+      "dateFinished": "Mar 3, 2017 3:20:20 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "ˆ%md\n\n输入表单的示例：\n\n\nHello ${Input:name\u003dsun}",
+      "user": "anonymous",
+      "dateUpdated": "Feb 27, 2017 12:01:57 PM",
+      "config": {
+        "colWidth": 3.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sh",
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {
+          "name": "sun morning"
+        },
+        "forms": {
+          "name": {
+            "name": "name",
+            "type": "Input",
+            "defaultValue": "sun",
+            "hidden": false
+          }
+        }
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e输入表单的示例：\u003c/p\u003e\n\u003cp\u003eHello sun morning\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488006154810_-1585986938",
+      "id": "20170225-070234_1888265065",
+      "dateCreated": "Feb 25, 2017 7:02:34 AM",
+      "dateStarted": "Feb 25, 2017 7:06:25 AM",
+      "dateFinished": "Feb 25, 2017 7:06:26 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\n\nprint(\n\"\"\"%angular\n\u003cdiv ng-include\u003d\"\u0027http://www.supermap.com\u0027\"\u003e\u003c/div\u003e \n\"\"\")",
+      "user": "anonymous",
+      "dateUpdated": "Mar 4, 2017 7:01:47 AM",
+      "config": {
+        "colWidth": 4.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/scala",
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "ANGULAR",
+            "data": "\u003cdiv ng-include\u003d\"\u0027http://www.supermap.com\u0027\"\u003e\u003c/div\u003e \n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488552643713_-695894604",
+      "id": "20170303-145043_982853061",
+      "dateCreated": "Mar 3, 2017 2:50:43 PM",
+      "dateStarted": "Mar 4, 2017 7:01:48 AM",
+      "dateFinished": "Mar 4, 2017 7:01:48 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\nnpm install highcharts-ng",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 3:18:10 PM",
+      "config": {
+        "colWidth": 3.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "highcharts-ng@1.0.1 node_modules/highcharts-ng\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488552535408_1964305264",
+      "id": "20170303-144855_1196327871",
+      "dateCreated": "Mar 3, 2017 2:48:55 PM",
+      "dateStarted": "Mar 3, 2017 3:18:10 PM",
+      "dateFinished": "Mar 3, 2017 3:18:12 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%angular\n\u003cdiv ng-app\u003d\"myApp\" data-ng-init\u003d\"myCtrl\"\u003e\u003c/div\u003e \n",
+      "user": "anonymous",
+      "dateUpdated": "Mar 4, 2017 7:07:34 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/undefined",
+        "editorHide": false,
+        "tableHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "ANGULAR",
+            "data": "\u003cdiv ng-app\u003d\"myApp\" data-ng-init\u003d\"myCtrl\"\u003e\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488610974860_-1259927737",
+      "id": "20170304-070254_932080570",
+      "dateCreated": "Mar 4, 2017 7:02:54 AM",
+      "dateStarted": "Mar 4, 2017 7:07:32 AM",
+      "dateFinished": "Mar 4, 2017 7:07:32 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\n\nimport matplotlib.pyplot as plt\nplt.plot([1, 2, 3])\nz.show(plt)",
+      "user": "anonymous",
+      "dateUpdated": "Mar 4, 2017 7:21:47 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "[\u003cmatplotlib.lines.Line2D object at 0x7f6729e73da0\u003e]\n"
+          },
+          {
+            "type": "HTML",
+            "data": "\u003cdiv style\u003d\u0027width:auto;height:auto\u0027\u003e\u003cimg src\u003ddata:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAGQCAYAAAByNR6YAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAIABJREFUeJzt3XlAlXX+/v/rCO4ICooSqIDgwiYpilk5WeFWmYqV2mSlDdnyaWb6pC0zLVqZo9O0TMsnJqfMsZwRLXK3cinNpKMGihsuKODG4gIoCpz374/5Dr8cNbUO3Occno+/4F6O17ubw7l6nQWbMcYIAAAATtPA6gAAAACehoIFAADgZBQsAAAAJ6NgAQAAOBkFCwAAwMkoWAAAAE5GwQIAAHAyChYAAICTUbAAAACcjIIFAADgZBQsAAAAJ6NgAQAAOBkFCwAAwMkoWAAAAE5GwQIAAHAyChYAAICTUbAAAACcjIIFAADgZBQsAAAAJ6NgAQAAOBkFCwAAwMkoWAAAAE5GwQIAAHAyChYAAICTUbAAAACcjIIFAADgZBQsAAAAJ6NgAQAAOBkFCwAAwMkoWAAAAE5GwQIAAHAyChYAAICTUbAAAACcjIIFAADgZBQsAAAAJ6NgAQAAOBkFCwAAwMkoWAAAAE5GwQIAAHAyChYAAICTUbAAAACcjIIFAADgZBQsAAAAJ6NgAQAAOBkFCwAAwMkoWAAAAE5GwQIAAHAyb6sDuJPWrVsrNDTU6hgAALid3NxcFRUVWR2jzlCwrkBoaKjsdrvVMQAAcDsJCQlWR6hTPEUIAADgZBQsAAAAJ6NgAQAAOBkFCwAAwMkoWAAAAE5GwQIAAHAyChYAAICTUbAAAACczK0LVkVFhXr37q3u3bsrOjpazz///HnHnDlzRnfddZciIiKUmJio3Nzcmn2vvPKKIiIi1KVLFy1fvrwOkwMAAE/m1p/k3rhxY61cuVI+Pj6qrKzUddddp8GDB6tPnz41x8ycOVOtWrXS7t27NXfuXD355JP65z//qW3btmnu3LnKzs7WwYMHdfPNN2vXrl3y8vKycEUAAMATuPUEy2azycfHR5JUWVmpyspK2Wy2c45JT0/XvffeK0kaOXKkvvrqKxljlJ6erlGjRqlx48YKCwtTRESEMjIy6nwNAAC4GmOM1RHcnlsXLEmqrq5WfHy8AgMDlZSUpMTExHP2FxQUqH379pIkb29v+fn5qbi4+JztkhQSEqKCgoI6zQ4AgCspKjujR+Zs0off5lodxe25fcHy8vLSDz/8oPz8fGVkZGjr1q1Ovf3U1FQlJCQoISFBhYWFTr1tAABcgTFGCzMPasBrX+uLbUdU7WCC9Uu5fcH6j5YtW6p///5atmzZOduDg4OVl5cnSaqqqtKJEycUEBBwznZJys/PV3Bw8Hm3m5KSIrvdLrvdrjZt2tTuIgAAqGOFpWf00D826X8+2az2rZpq0WPX6YHrw62O5fbcumAVFhbq+PHjkqTTp0/riy++UNeuXc85ZujQoZo1a5YkKS0tTTfeeKNsNpuGDh2quXPn6syZM9q3b59ycnLUu3fvOl8DAABWMMYo/YcCJb22Rit3HtVTg7tq/kN91bltC6ujeQS3fhfhoUOHdO+996q6uloOh0N33nmnbr31Vj333HNKSEjQ0KFDNX78eN1zzz2KiIiQv7+/5s6dK0mKjo7WnXfeqaioKHl7e+vtt9/mHYQAgHrh6MkK/eGzrfpi2xFd3aGlZoyMU0QgxcqZbIa3Cly2hIQE2e12q2MAAPCzGGP06eYCTV64TRWV1XpiQBeNuy5MXg1slz75F6pvj6FuPcECAACX5/CJCj3z6Rat3HFUCR1bafrIOIW38bE6lseiYAEA4MGMMZq3MV8vLtqmymqHnr01Svf1Da2TqVV9RsECAMBDHTx+Wk8v2KI1uwrVO9Rf00fGKbR1c6tj1QsULAAAPIwxRv/8Pk8vL96uKofR5KHRuqdPRzVgalVnKFgAAHiQguOn9dT8LH2TU6Q+4f6antxdHQKaWR2r3qFgAQDgAYwx+jjjgKYu3i4j6cVhMbq7dwemVhahYAEA4ObySk7pyflZ+nZPsa6NCNC0EXFq78/UykoULAAA3JTDYTRnw369snSHGthsmjo8VqN7t5fNxtTKahQsAADc0P7icj05P0vf7S3R9ZGtNS05TsEtm1odC/8PBQsAADficBh9tD5Xf1q2U94NbJqeHKc7EkKYWrkYChYAAG5iX1G5nkzLUkZuiW7o0kavjIhVkB9TK1dEwQIAwMVVO4w+WLdPf16xUw29GujPd3RXco9gplYujIIFAIAL21NYpklpWdq4/5hu6hqoqSNi1da3idWxcAkULAAAXFC1w2jm2r16dcUuNWnopdfu6q5h8Uyt3AUFCwAAF7P7aKmemJelH/KOa0BUW700LEaBTK3cCgULAAAXUVXt0N++2afXvtyl5o289Oboq3VbXBBTKzdEwQIAwAXsPFyqSWmZysw/ocEx7TTl9hi1adHY6lj4mShYAABYqLLaoffW7NGbX+2WTxNvvT2mh26JC7I6Fn4hChYAABbZfuikJqZlamvBSd0SF6QpQ6MV4MPUyhNQsAAAqGOV1Q69s2qP3lqVI7+mDfXu3T00OJaplSehYAEAUIeyD57QE/OytP3QSd0ef5Wevy1a/s0bWR0LTkbBAgCgDpytcuitVbv1zqrdatW8kVLv6akB0e2sjoVaQsECAKCWbck/oYlpmdpxuFQjrg7Wc7dFqWUzplaejIIFAEAtOVNVrTe/ytH/rdmr1j6NNPPeBN3Ura3VsVAHKFgAANSCzLzjmpiWqV1HyjSyZ4ievSVKfs0aWh0LdYSCBQCAE1VUVuv1L3OU+vUeBbZoog/u76X+XQKtjoU65rYFKy8vT2PHjtWRI0dks9mUkpKi3/72t+ccM2PGDM2ZM0eSVFVVpe3bt6uwsFD+/v4KDQ1VixYt5OXlJW9vb9ntdiuWAQDwIJsOHNPEeZnaU1iuUb3a65lbusm3CVOr+shmjDFWh/g5Dh06pEOHDqlHjx4qLS1Vz5499dlnnykqKuqCxy9cuFCvvfaaVq5cKUkKDQ2V3W5X69atL/vfTEhIoIgBAM5TUVmtv3yxS+9/s1ftfJtoWnKc+nVuY3Usl1LfHkPddoIVFBSkoKB/fyhbixYt1K1bNxUUFFy0YH3yyScaPXp0XUYEANQD9twSTUrL0t6ico1J7KCnB3dVC6ZW9V4DqwM4Q25urjZv3qzExMQL7j916pSWLVum5OTkmm02m00DBgxQz549lZqaWldRAQAe4vTZak1ZuE13vLdeZ6ocmvNAoqYOj6VcQZIbT7D+o6ysTMnJyXr99dfl6+t7wWMWLlyoa6+9Vv7+/jXb1q5dq+DgYB09elRJSUnq2rWr+vXrd965qampNQWssLCwdhYBAHArG/YW68n5WcotPqV7+nTUk4O7yqex2z+kwonceoJVWVmp5ORk3X333RoxYsRFj5s7d+55Tw8GBwdLkgIDAzV8+HBlZGRc8NyUlBTZ7XbZ7Xa1acPz6QBQn506W6UXPs/WXanfqdoYffKbPnpxWAzlCudx24JljNH48ePVrVs3Pf744xc97sSJE1qzZo1uv/32mm3l5eUqLS2t+XrFihWKiYmp9cwAAPe1fk+xBr3+jT78Nlf39Q3V8t/10zWdAqyOBRfltpV73bp1mj17tmJjYxUfHy9Jmjp1qg4cOCBJmjBhgiTp008/1YABA9S8efOac48cOaLhw4dL+vfHN4wZM0aDBg2q4xUAANxB+ZkqTVu6Q7O/26/QgGb614PXqHeY/6VPRL3mth/TYIX69hZTAKjv1u0u0qS0LB08cVrjrg3TEwO6qGkjL6tjuaX69hjqthMsAABqS2lFpV5ZukMfbzig8NbNlTbhGvXsyNQKl4+CBQDAj3y9q1BPzc/S4ZMVSukXrseTOqtJQ6ZWuDIULAAAJJ2sqNTLi7brn/Y8dWrTXGkP9VWPDq2sjgU3RcECANR7q3Ye1TMLtujIyQo9dEMn/famSKZW+EUoWACAeuvEqUq9uHib0jbmq3NbH/3fr69V9/YtrY4FD0DBAgDUS19uO6JnPt2i4vKzerR/hP7npgg19mZqBeegYAEA6pXjp85qysJtWrC5QF3btdDMe3spNsTP6ljwMBQsAEC9sTz7sP742VYdKz+rx26K1KP9I9TI223/qAlcGAULAODxSsrP6oXPs/V55kF1C/LVh/f3UvRVTK1QeyhYAACPtnTLIT2bvlUnTlfq9zd31sP9O6mhF1Mr1C4KFgDAIxWXndFzn2drcdYhxQT7avb4RHUL8rU6FuoJChYAwKMYY7R4yyE9l56tsooqTRzYRSn9wplaoU5RsAAAHqOw9IyeS9+qpVsPq3uIn2bc0V2d27awOhbqIQoWAMDtGWP0eeZBvfB5tsrPVuvJQV31m+vD5M3UChahYAEA3NrRkxX6w2db9cW2I4pv31J/viNOEYFMrWAtChYAwC0ZY/Tp5gJNXrhNFZXVemZIV42/LlxeDWxWRwMoWAAA93PkZIWeWbBFX+04qp4dW2n6yDh1auNjdSygBgULAOA2jDFK25ivFxdt09lqh569NUr39Q1lagWXQ8ECALiFQydO6+kFW7R6Z6F6h/pr+sg4hbZubnUs4IIoWAAAl2aM0b/seXpp0XZVOYxeuC1KY68JVQOmVnBhFCwAgMsqOH5aT83P0jc5ReoT7q/pyd3VIaCZ1bGAS6JgAQBcjjFGH2cc0CtLdshhjF68PVp3J3ZkagW3QcECALiUvJJTempBltbtLlbfTgH6U3Kc2vsztYJ7oWABAFyCw2E0Z8N+vbJ0hxrYbJo6PFaje7eXzcbUCu6HggUAsNyB4lOaND9T3+0t0fWRrTUtOU7BLZtaHQv42ShYAADLOBxGH63P1Z+W7ZR3A5v+lByrOxOYWsH9ue1fwczLy1P//v0VFRWl6OhovfHGG+cds3r1avn5+Sk+Pl7x8fGaMmVKzb5ly5apS5cuioiI0LRp0+oyOgBAUm5RuUalfqcXFm5TYri/lv++n+7q1YFyBY/gthMsb29vvfrqq+rRo4dKS0vVs2dPJSUlKSoq6pzjrr/+ei1atOicbdXV1XrkkUf0xRdfKCQkRL169dLQoUPPOxcA4HzVDqMP1u3Tn1fsVEOvBpoxMk4je4ZQrOBR3LZgBQUFKSgoSJLUokULdevWTQUFBZdVkjIyMhQREaHw8HBJ0qhRo5Senk7BAoBatqewTJPSsrRx/zHd1DVQLw+PVTu/JlbHApzObZ8i/LHc3Fxt3rxZiYmJ5+1bv369unfvrsGDBys7O1uSVFBQoPbt29ccExISooKCgjrLCwD1TbXDKPXrPRryxjfafbRMr93VXe/fm0C5gsdy2wnWf5SVlSk5OVmvv/66fH19z9nXo0cP7d+/Xz4+PlqyZImGDRumnJycK7r91NRUpaamSpIKCwudlhsA6ovdR0s1MS1Lmw8cV1JUW708LEaBvhQreDa3nmBVVlYqOTlZd999t0aMGHHefl9fX/n4+EiShgwZosrKShUVFSk4OFh5eXk1x+Xn5ys4OPiC/0ZKSorsdrvsdrvatGlTOwsBAA9UVe3Qu6v3aMiba7WvqFxvjIpX6j09KVeoF9x2gmWM0fjx49WtWzc9/vjjFzzm8OHDatu2rWw2mzIyMuRwOBQQEKCWLVsqJydH+/btU3BwsObOnauPP/64jlcAAJ5r15FSTZyXqcz8ExoU3U4vDotRmxaNrY4F1Bm3LVjr1q3T7NmzFRsbq/j4eEnS1KlTdeDAAUnShAkTlJaWpnfffVfe3t5q2rSp5s6dK5vNJm9vb7311lsaOHCgqqurNW7cOEVHR1u5HADwCJXVDr23Zo/e/Gq3fJp4660xV+uW2CDeIYh6x2aMMVaHcBcJCQmy2+1WxwAAl7T90ElNTMvU1oKTuiUuSFOGRivAh6kV/q2+PYa67QQLAOAaKqsdemfVHr21Kkd+TRvq3bt7aHBskNWxAEtRsAAAP1v2wROaOC9L2w6d1NDuV+mFodHyb97I6liA5ShYAIArdrbKobdW7dY7q3arZbNGeu+enhoY3c7qWIDLoGABAK7I1oITemJepnYcLtXwq4P1/G1RatmMqRXwYxQsAMBlOVNVrb9+tVvvrtmjgOaN9P7YBN0c1dbqWIBLomABAC4pM++4JqZlateRMo3sGaJnb4mSX7OGVscCXBYFCwBwURWV1Xrjqxy9t2aPAls00Qf391L/LoFWxwJcHgULAHBBmw4c06S0LO0+Wqa7EtrrD7d2k28TplbA5aBgAQDOUVFZrb98sUvvf7NX7XybaNa43vpVZ/4WK3AlKFgAgBob95do4rws7S0q1+jeHfTMkK5qwdQKuGIULACATp+t1p9X7NTf1+3TVX5N9Y/xibousrXVsQC3RcECgHouY1+JJqVlKrf4lO7p01FPDu4qn8Y8PAC/BPcgAKinTp2t0vRlOzVrfa5CWjXVx79JVN9OTK0AZ6BgAUA9tH5PsZ6cn6UDJad0X99QTRzYRc2ZWgFOw70JAOqR8jNVmrZ0h2Z/t18dA5rpnyl9lBgeYHUswONQsACgnli3u0hPzs9SwfHTGndtmCYO7KKmjbysjgV4JAoWAHi40opKvbJ0hz7ecEBhrZtr3oPXKCHU3+pYgEejYAGAB/t6V6GeXrBFh06cVkq/cD2e1FlNGjK1AmobBQsAPNDJikpNXbxdc7/PU6c2zZX2UF/16NDK6lhAvUHBAgAPs2rnUT2zYIuOnKzQhF910u9ujmRqBdQxChYAeIgTpyv10qJtmrcxX5GBPnr34WsV376l1bGAeomCBQAe4KvtR/TMp1tUVHZWj/TvpMduilRjb6ZWgFUoWADgxo6fOqspC7dpweYCdWnbQu+P7aXYED+rYwH1HgULANzUiuzD+sNnW3Ws/KweuylSj/aPUCPvBlbHAiAKFgC4nWPlZ/XCwmyl/3BQ3YJ89cF9vRQTzNQKcCUULABwI8u2HtIfP9uq46cq9fubO+uhGzoxtQJckNveK/Py8tS/f39FRUUpOjpab7zxxnnHzJkzR3FxcYqNjVXfvn2VmZlZsy80NFSxsbGKj49XQkJCXUYHgCtWXHZGj368SRP+sUnt/Jpo4f9cp9/eHEm5AlyU206wvL299eqrr6pHjx4qLS1Vz549lZSUpKioqJpjwsLCtGbNGrVq1UpLly5VSkqKNmzYULN/1apVat26tRXxAeCyLc46pOfSt+pkRaWeGNBZD/6qkxp6UawAV+a2BSsoKEhBQUGSpBYtWqhbt24qKCg4p2D17du35us+ffooPz+/znMCwM9VWHpGz6Vv1dKthxUX4qePR/ZRl3YtrI4F4DK4bcH6sdzcXG3evFmJiYkXPWbmzJkaPHhwzfc2m00DBgyQzWbTgw8+qJSUlLqICgCXZIzR55kH9cLn2So/U61Jg7oo5fpweTO1AtyG2xessrIyJScn6/XXX5evr+8Fj1m1apVmzpyptWvX1mxbu3atgoODdfToUSUlJalr167q16/feeempqYqNTVVklRYWFg7iwCA/+doaYX++OlWrdh2RPHtW2rGyDhFtmVqBbgbmzHGWB3i56qsrNStt96qgQMH6vHHH7/gMVlZWRo+fLiWLl2qzp07X/CYF154QT4+PnriiSd+8t9LSEiQ3W7/xbkB4L8ZY/TZDwV64fNtOl1ZrScGdNb468Ll1cBmdTTAKerbY6jbzpuNMRo/fry6det20XJ14MABjRgxQrNnzz6nXJWXl6u0tLTm6xUrVigmJqZOcgPAfztyskK/+ciu3/8zUxGBPlr62+uV0q8T5QpwY277FOG6des0e/bsmo9akKSpU6fqwIEDkqQJEyZoypQpKi4u1sMPPyzp3+88tNvtOnLkiIYPHy5Jqqqq0pgxYzRo0CBrFgKg3jLGaP6mAk1ZmK2z1Q798ZZuuv/aMIoV4AHc+inCulbfxpsAas+hE6f19IItWr2zUL1CW2n6yO4Ka93c6lhAralvj6FuO8ECAHdkjNG/7Hl6adF2VTmMnr8tSvdeE6oGTK0Aj0LBAoA6UnD8tJ6an6VvcoqUGOav6SPj1DGAqRXgiShYAFDLjDH6JCNPU5dsl8MYvXh7tO5O7MjUCvBgFCwAqEV5Jaf09IItWru7SH07BehPyXFq79/M6lgAahkFCwBqgcNhNCfjgKYt2S5Jenl4jMb07iCbjakVUB9QsADAyQ4Un9Kk+Zn6bm+Jro9srVdGxCqkFVMroD6hYAGAkzgcRh+tz9Wflu2UdwObpo2I1V292jO1AuohChYAOEFuUbkmzc9Sxr4S/apzG70yIlZXtWxqdSwAFqFgAcAvUO0w+vDbXM1YvkMNvRpoxsg4jewZwtQKqOcoWADwM+0tLNOktCzZ9x/TjV0DNXV4rNr5NbE6FgAXQMECgCtU7TD6+9p9+vOKnWrS0Et/ubO7hl8dzNQKQA0KFgBcgd1HyzQxLVObDxzXzd3aaurwGAX6MrUCcC4KFgBchqpqh/72zT699uUuNWvkpTdGxWto96uYWgG4IAoWAFzCriOlmjgvU5n5JzQoup1eHBajNi0aWx0LgAujYAHARVRVO/Te13v1xpc58mnirbfGXK1bYoOYWgG4JAoWAFzAjsMnNXFelrYUnNAtcUGaMjRaAT5MrQBcHgoWAPxIZbVD767eo7+uzJFvk4Z65+4eGhIbZHUsAG6GggUA/0/2wROaOC9L2w6d1NDuV+mFodHyb97I6lgA3BAFC0C9d7bKobdX7dbbq3arZbNGeu+enhoY3c7qWADcGAULQL22teCEnpiXqR2HSzX86mA9f1uUWjZjagXgl6FgAaiXzlRV669f7da7a/YooHkjvT82QTdHtbU6FgAPQcECUO9k5R/XE/MytetImUb2DNGzt0TJr1lDq2MB8CAULAD1RkVltd74KkepX+9VG5/G+uC+XurfNdDqWAA8EAULQL2w+cAxTUzL0u6jZbozIUR/uCVKfk2ZWgGoHRQsAB6torJar32xS3/7Zq/a+jbRrHG99avObayOBcDDUbAAeKyN+0s0cV6W9haVa3TvDnpmSFe1aMLUCkDta2B1gF8iLy9P/fv3V1RUlKKjo/XGG2+cd4wxRo899pgiIiIUFxenTZs21eybNWuWIiMjFRkZqVmzZtVldAC16PTZar24aJtG/t96naly6B/jE/XKiFjKFYA649YTLG9vb7366qvq0aOHSktL1bNnTyUlJSkqKqrmmKVLlyonJ0c5OTnasGGDHnroIW3YsEElJSWaPHmy7Ha7bDabevbsqaFDh6pVq1YWrgjAL5Wxr0ST0jKVW3xKv+7TQU8N7iafxm79qw6AG3LrCVZQUJB69OghSWrRooW6deumgoKCc45JT0/X2LFjZbPZ1KdPHx0/flyHDh3S8uXLlZSUJH9/f7Vq1UpJSUlatmyZFcsA4ASnzlbphc+zdVfqelUbo49/k6iXhsVSrgBYwmN+8+Tm5mrz5s1KTEw8Z3tBQYHat29f831ISIgKCgouuh2A+/lub7EmpWXpQMkp3XtNR00a1FXNKVYALOQRv4HKysqUnJys119/Xb6+vk697dTUVKWmpkqSCgsLnXrbAH6Z8jNV+tOyHfpo/X51DGimuSl91Cc8wOpYAODeTxFKUmVlpZKTk3X33XdrxIgR5+0PDg5WXl5ezff5+fkKDg6+6Pb/lpKSIrvdLrvdrjZteGs34Cq+3V2kga9/rdnf7de4a8O09LfXU64AuAy3LljGGI0fP17dunXT448/fsFjhg4dqo8++kjGGH333Xfy8/NTUFCQBg4cqBUrVujYsWM6duyYVqxYoYEDB9bxCgBcqdKKSj3z6RaNeX+DGno10LwHr9Fzt0WpWSOPGMgD8BBu/Rtp3bp1mj17tmJjYxUfHy9Jmjp1qg4cOCBJmjBhgoYMGaIlS5YoIiJCzZo10wcffCBJ8vf317PPPqtevXpJkp577jn5+/tbsxAAl+WbnEI9NX+LDp44rd9cH6bHk7qoaSMvq2MBwHlsxhhjdQh3kZCQILvdbnUMoN45WVGpqYu3a+73eQpv01wzRnZXz458pArgTurbY6hbT7AAeL7VO4/q6QVbdORkhR78Vbh+f3NnNWnI1AqAa6NgAXBJJ05X6qVF2zRvY74iA3307sPXKr59S6tjAcBloWABcDkrdxzR0wu2qKjsrB7p30mP3RSpxt5MrQC4DwoWAJdx4lSlJi/K1oJNBerStoXeH9tLsSF+VscCgCtGwQLgEr7YdkTPfLpFx8rP6rEbI/TIjRFMrQC4LQoWAEsdKz+ryQuz9dkPB9UtyFcf3NdLMcFMrQC4NwoWAMss23pIf/wsW8dPndXvbo7UwzdEqJG3W3/+MQBIomABsEBx2Rk9/3m2FmUdUvRVvvpoXG9FXeXcvyMKAFaiYAGoU4uzDum59K06WVGp/03qrAk3dFJDL6ZWADwLBQtAnSgqO6Pn0rdqyZbDig3208d39FGXdi2sjgUAtYKCBaBWGWO0MOuQnk/fqvIz1Zo0qItSrg+XN1MrAB6MggWg1hwtrdCzn23V8uwj6t6+pf48Mk6RbZlaAfB8FCwATmeMUfoPB/XCwmydOlutpwd31fjrwphaAag3KFgAnOrIyQr94dMt+nL7UfXo0FLTR3ZXRKCP1bEAoE5RsAA4hTFG8zcVaMrCbJ2pcuiPt3TT/deGyauBzepoAFDnKFgAfrHDJyr09IIsrdpZqF6hrTR9ZHeFtW5udSwAsAwFC8DPZozRPHu+Xly8TZXVDj1/W5TuvSZUDZhaAajnKFgAfpaDx0/rqQVb9PWuQiWG+Wv6yDh1DGBqBQASBQvAFTLGaO73eXp58XY5jNGU26P168SOTK0A4EcoWAAuW/6xU3pq/hat3V2ka8IDNH1knNr7N7M6FgC4HAoWgEtyOIzmZBzQtCXbJUkvDYvRmN4dmFoBwEVQsAD8pLySU5qUlqX1e4t1XURrTUuOVUgrplYA8FMoWAAuyOEwmv3dfv1p2Q41sNk0bUSs7urVXjYbUysAuBQKFoA3mdtuAAAdIUlEQVTz7C8u18S0LGXsK9GvOrfRKyNidVXLplbHAgC3QcECUMPhMPrw21xNX75DDb0aaPrION3RM4SpFQBcIQoWAEnS3sIyTUrLkn3/Md3YNVBTh8eqnV8Tq2MBgFty64I1btw4LVq0SIGBgdq6det5+2fMmKE5c+ZIkqqqqrR9+3YVFhbK399foaGhatGihby8vOTt7S273V7X8QGXUO0w+vvaffrzip1q7N1Ar97RXSN6BDO1AoBfwGaMMVaH+Lm+/vpr+fj4aOzYsRcsWD+2cOFCvfbaa1q5cqUkKTQ0VHa7Xa1bt77sfy8hIYEiBo+y+2iZJqZlavOB47q5W1tNHR6jQF+mVgCcr749hrr1BKtfv37Kzc29rGM/+eQTjR49unYDAW6iqtqh99fu01++2KVmjbz0xqh4De1+FVMrAHASty5Yl+vUqVNatmyZ3nrrrZptNptNAwYMkM1m04MPPqiUlBQLEwJ1J+dIqZ5Iy1Jm3nENjG6rF4fFKLAFUysAcKZ6UbAWLlyoa6+9Vv7+/jXb1q5dq+DgYB09elRJSUnq2rWr+vXrd965qampSk1NlSQVFhbWWWbA2aqqHXrv671648sc+TTx1l9HX61b44KYWgFALWhgdYC6MHfu3POeHgwODpYkBQYGavjw4crIyLjguSkpKbLb7bLb7WrTpk2tZwVqw47DJzX8nW81Y/lOJUW11Yrf99NtPCUIALXG4wvWiRMntGbNGt1+++0128rLy1VaWlrz9YoVKxQTE2NVRKDWVFY79OZXObrtr2t18PhpvXN3D719dw+19mlsdTQA8Ghu/RTh6NGjtXr1ahUVFSkkJESTJ09WZWWlJGnChAmSpE8//VQDBgxQ8+bNa847cuSIhg8fLunfH98wZswYDRo0qO4XANSibQdPamJaprIPntRt3a/S5KHR8m/eyOpYAFAvuPXHNNS1+vYWU7ins1UOvb1qt95etVstmzXSS8NiNCimndWxANRz9e0x1K0nWADOtbXghJ6Yl6kdh0s1/OpgPXdrlFoxtQKAOkfBAjzAmapqvbVyt95ZvUcBzRvpb2MTlBTV1upYAFBvUbAAN5eVf1wT52Vp55FSJfcI0XO3RsmvWUOrYwFAvUbBAtxURWW13vwqR+99vVdtfBrr7/cl6MauTK0AwBVQsAA3tPnAMU1My9Luo2W6MyFEf7glSn5NmVoBgKugYAFupKKyWq99sUt/+2av2vo20Yf399INXQKtjgUA+C8ULMBNbNx/TBPTMrW3sFyje3fQM0O6qkUTplYA4IooWICLO322Wq+u2KmZ6/bpKr+mmj2+t66P5M82AYAro2ABLuz73BJNSsvSvqJy/bpPBz01uJt8GnO3BQBXx29qwAWdOlulGct36sNvcxXSqqk+fiBRfSNaWx0LAHCZKFiAi/lub7EmpWXpQMkp3XtNR00a1FXNmVoBgFvhtzbgIsrPVOlPy3boo/X71TGgmeam9FGf8ACrYwEAfgYKFuACvt1dpEnzs1Rw/LTuvzZUEwd2UbNG3D0BwF3xGxywUNmZKr2yZLvmbDigsNbN9a8Hr1GvUH+rYwEAfiEKFmCRtTlFenJ+lg6eOK3fXB+mx5O6qGkjL6tjAQCcgIIF1LGTFZV6Zcl2fZKRp/A2zZU2oa96dmxldSwAgBNRsIA6tHrnUT29YIuOnKzQg78K1+9v7qwmDZlaAYCnoWABdeDE6Uq9tGib5m3MV2Sgj955qK+u7sDUCgA8FQULqGUrdxzR0wu2qKjsrB6+oZMeuymSqRUAeDgKFlBLTpyq1ORF2VqwqUBd2rbQ38YmKC6kpdWxAAB1gIIF1IIvth3RHz7douLys/qfGyP06I0RauzN1AoA6gsKFuBEx8rPavLCbH32w0F1bddCf7+vl2KC/ayOBQCoYxQswEmWbT2sP362VcdPndXvbo7UwzdEqJF3A6tjAQAsQMECfqHisjN6/vNsLco6pKggX300rreirvK1OhYAwEIULOAXWLLlkJ79bKtOVlTqf5M6a8INndTQi6kVANR3FCzgZygqO6Pn0rdqyZbDig3205w7EtW1HVMrAMC/ufX/ao8bN06BgYGKiYm54P7Vq1fLz89P8fHxio+P15QpU2r2LVu2TF26dFFERISmTZtWV5Hh5owxWph5UEl/WaMvtx3VxIFd9OnDfSlXAIBzuPUE67777tOjjz6qsWPHXvSY66+/XosWLTpnW3V1tR555BF98cUXCgkJUa9evTR06FBFRUXVdmS4saOlFXr2s61ann1E3du31J9HximybQurYwEAXJBbF6x+/fopNzf3is/LyMhQRESEwsPDJUmjRo1Seno6BQsXZIxR+g8H9cLCbJ06W62nBnfVA9eFyZvXWgEALsLjHyHWr1+v7t27a/DgwcrOzpYkFRQUqH379jXHhISEqKCgwKqIcGFHT1boNx9t1O/++YPCWjfXkseu14RfdaJcAQB+kltPsC6lR48e2r9/v3x8fLRkyRINGzZMOTk5V3QbqampSk1NlSQVFhbWRky4IGOMFmwq0OSF2TpT5dAfb+mm+68Nk1cDm9XRAABuwKP/N9zX11c+Pj6SpCFDhqiyslJFRUUKDg5WXl5ezXH5+fkKDg6+4G2kpKTIbrfLbrerTZs2dZIb1jp8okLjPvxe/zsvU53bttDS316vB64Pp1wBAC6bR0+wDh8+rLZt28pmsykjI0MOh0MBAQFq2bKlcnJytG/fPgUHB2vu3Ln6+OOPrY4LixljNG9jvl5ctE2V1Q49d2uU7u0bSrECAFwxty5Yo0eP1urVq1VUVKSQkBBNnjxZlZWVkqQJEyYoLS1N7777rry9vdW0aVPNnTtXNptN3t7eeuuttzRw4EBVV1dr3Lhxio6Otng1sNLB46f11IIt+npXoXqH+Wt6cpxCWze3OhYAwE3ZjDHG6hDuIiEhQXa73eoYcCJjjOZ+n6eXF2+Xwxg9Oair7unTUQ2YWgGAU9W3x1C3nmABv0T+sVN6esEWfZNTpGvCA/Sn5Dh1CGhmdSwAgAegYKHecTiMPs44oFeWbJckvTQsRmN6d2BqBQBwGgoW6pW8klN6cn6Wvt1TrOsiWmtacqxCWjG1AgA4FwUL9YLDYfSPDfs1bekONbDZ9MqIWI3q1V42G1MrAIDzUbDg8fYXl2tSWpY27CtRv85t9MqIWAW3bGp1LACAB6NgwWM5HEYffpurGct3ytvLpunJcbojIYSpFQCg1lGw4JH2FZVrUlqmvs89pv5d2mjqiFgF+TG1AgDUDQoWPEq1w+iDdfs0Y/lONfZuoFfv6K4RPYKZWgEA6hQFCx5jT2GZJs7L1KYDx3Vzt0C9PDxWbX2bWB0LAFAPUbDg9qodRu9/s1evfrFLzRp56fW74nV7/FVMrQAAlqFgwa3lHCnVE2lZysw7rgFRbfXS8BgFtmBqBQCwFgULbqmq2qH3vt6rN77MUfPGXnpz9NW6LS6IqRUAwCVQsOB2dh4u1cS0TGXln9CQ2HaacnuMWvs0tjoWAAA1KFhwG5XVDv3f6j16c2WOfJs01NtjeuiWuCCrYwEAcB4KFtzC9kMn9cS8TGUfPKnbul+lF26LUgBTKwCAi6JgwaWdrXLondW79dbK3WrZrKH+79c9NCiGqRUAwLVRsOCythac0MS0LG0/dFLD4q/S87dFq1XzRlbHAgDgkihYcDlnqxx6a2WO3lm9R62aN9LfxiYoKaqt1bEAALhsFCy4lKz845o4L0s7j5RqRI9gPXdrlFo2Y2oFAHAvFCy4hDNV1Xrjyxy99/VetfZppL/fl6AbuzK1AgC4JwoWLPdD3nFNnJepnKNlujMhRH+4JUp+TRtaHQsAgJ+NggXLVFRW67Uvd+lvX+9VW98m+vD+XrqhS6DVsQAA+MUoWLDExv3HNCktU3sKyzW6d3s9PaSbfJswtQIAeAYKFupURWW1Xl2xU++v3aer/Jpq9vjeuj6yjdWxAABwKgoW6sz3uSWalJalfUXlujuxg54e0k0+jfkRBAB4Hh7dUOtOna3SjOU79eG3uQpu2VQfP5CovhGtrY4FAECtaWB1gF9i3LhxCgwMVExMzAX3z5kzR3FxcYqNjVXfvn2VmZlZsy80NFSxsbGKj49XQkJCXUWudzbsLdbgN77RB+tydU+fjlr+u36UKwCAx3PrCdZ9992nRx99VGPHjr3g/rCwMK1Zs0atWrXS0qVLlZKSog0bNtTsX7VqlVq35sG+NpSfqdL0ZTs0a/1+dfBvpk9+00fXdAqwOhYAAHXCrQtWv379lJube9H9ffv2rfm6T58+ys/Pr4NU+HZPkZ6cn6X8Y6d1/7Whmjiwi5o1cusfNQAArki9edSbOXOmBg8eXPO9zWbTgAEDZLPZ9OCDDyolJcXCdJ6h7EyVpi3drn98d0BhrZvrXw9eo16h/lbHAgCgztWLgrVq1SrNnDlTa9eurdm2du1aBQcH6+jRo0pKSlLXrl3Vr1+/885NTU1VamqqJKmwsLDOMrubtTn/nlodPHFaD1wXpv8d0EVNG3lZHQsAAEu49YvcL0dWVpYeeOABpaenKyDg/38NUHBwsCQpMDBQw4cPV0ZGxgXPT0lJkd1ul91uV5s2fF7TfyutqNTTC7L065kb1LhhA6VNuEZ/vDWKcgUAqNc8umAdOHBAI0aM0OzZs9W5c+ea7eXl5SotLa35esWKFRd9JyIubs2uQg187Wv98/s8PdgvXEseu149O/KUIAAAbv0U4ejRo7V69WoVFRUpJCREkydPVmVlpSRpwoQJmjJlioqLi/Xwww9Lkry9vWW323XkyBENHz5cklRVVaUxY8Zo0KBBlq3D3Zw4XamXF2/Tv+z5igj00fyH+urqDq2sjgUAgMuwGWOM1SHcRUJCgux2u9UxLLVqx1E9vWCLjpZWaMKvOumxmyLVpCFPBwIAflp9ewx16wkW6s6JU5Wasmib5m/KV5e2LZQ6tqfiQlpaHQsAAJdEwcIlfbntiJ75dIuKy8/qf26M0KM3RqixN1MrAAAuhoKFizpWflaTF2brsx8Oqmu7Fvr7fb0UE+xndSwAAFweBQsXtDz7sP7w6VYdP3VWv70pUo/0j1Ajb49+0ykAAE5DwcI5SsrP6vnPs7Uw86Cignw1a1wvRV/F1AoAgCtBwUKNJVsO6dnPtupkRaX+N6mzJtzQSQ29mFoBAHClKFhQUdkZPZ+ercVbDik22E9z7khU13a+VscCAMBtUbDqMWOMFmUd0vOfZ6usokoTB3bRg/3C5c3UCgCAX4SCVU8Vlp7Rs59t1bLsw+revqVmjIxT57YtrI4FAIBHoGDVM8YYfZ55UM9/nq1TZ6v11OCueuC6MKZWAAA4EQWrHjl6skLPfLpVX24/oqs7tNSMkd0VEehjdSwAADwOBaseMMbo080FeuHzbJ2pcuiPt3TT/deGyauBzepoAAB4JAqWhzt8okLPfLpFK3ccVULHVpo+Mk7hbZhaAQBQmyhYHsoYo3kb8/Xiom2qrHbouVujdG/fUKZWAADUAQqWBzp4/LSeXrBFa3YVqneYv6Ynxym0dXOrYwEAUG9QsDyIMUb//D5PLy3ermqH0eSh0bqnT0c1YGoFAECdomB5iPxjp/T0gi36JqdI14QH6E/JceoQ0MzqWAAA1EsULDdnjNHHGQc0dfF2SdJLw2I0pncHplYAAFiIguXG8kpO6cn5Wfp2T7GujQjQtBFxau/P1AoAAKtRsNyQw2H0jw37NW3pDjWw2TR1eKxG924vm42pFQAAroCC5Wb2F5drUlqWNuwr0fWRrTUtOU7BLZtaHQsAAPwIBctNOBxGs9bnavqynfJuYNP05DjdkRDC1AoAABdEwXID+4rKNSktU9/nHlP/Lm00dUSsgvyYWgEA4KooWC6s2mH0wbp9mrF8pxp7N9Cf7+iu5B7BTK0AAHBxFCwXtaewTBPnZWrTgeO6qWugpo6IVVvfJlbHAgAAl4GC5WKqHUbvf7NXr36xS00beum1u7prWDxTKwAA3EkDqwP8EuPGjVNgYKBiYmIuuN8Yo8cee0wRERGKi4vTpk2bavbNmjVLkZGRioyM1KxZs+oq8k/KOVKq5He/1StLd+iGzm30xeP9NPxqXsgOAIC7ceuCdd9992nZsmUX3b906VLl5OQoJydHqampeuihhyRJJSUlmjx5sjZs2KCMjAxNnjxZx44dq6vY56mqduid1bt1y5trtb+4XG+Ovlrv3dNTgS14ShAAAHfk1gWrX79+8vf3v+j+9PR0jR07VjabTX369NHx48d16NAhLV++XElJSfL391erVq2UlJT0k0WtNu08XKoR736r6ct26qZugVrx+19paPermFoBAODGPPo1WAUFBWrfvn3N9yEhISooKLjo9rr2t6/3avryHWrRpKHeHtNDt8QF1XkGAADgfB5dsJwhNTVVqampkqTCwkKn3rZXA5sGRrfT5KHRCvBp7NTbBgAA1nHrpwgvJTg4WHl5eTXf5+fnKzg4+KLbLyQlJUV2u112u11t2rRxar77rw3VW2N6UK4AAPAwHl2whg4dqo8++kjGGH333Xfy8/NTUFCQBg4cqBUrVujYsWM6duyYVqxYoYEDB9Z5Pl5nBQCAZ3LrpwhHjx6t1atXq6ioSCEhIZo8ebIqKyslSRMmTNCQIUO0ZMkSRUREqFmzZvrggw8kSf7+/nr22WfVq1cvSdJzzz33ky+WBwAAuBI2Y4yxOoS7SEhIkN1utzoGAABup749hnr0U4QAAABWoGABAAA4GQULAADAyShYAAAATkbBAgAAcDIKFgAAgJNRsAAAAJyMggUAAOBkFCwAAAAn45Pcr0Dr1q0VGhrq1NssLCx0+h+Rthprcg+syfV52nok1uQuamNNubm5KioqcuptujIKlsU88U8HsCb3wJpcn6etR2JN7sIT11TXeIoQAADAyShYAAAATub1wgsvvGB1iPquZ8+eVkdwOtbkHliT6/O09UisyV144prqEq/BAgAAcDKeIgQAAHAyClYtWrZsmbp06aKIiAhNmzbtvP1nzpzRXXfdpYiICCUmJio3N7dm3yuvvKKIiAh16dJFy5cvr8PUF3ep9fzlL39RVFSU4uLidNNNN2n//v01+7y8vBQfH6/4+HgNHTq0LmP/pEut6cMPP1SbNm1qsr///vs1+2bNmqXIyEhFRkZq1qxZdRn7J11qTb///e9r1tO5c2e1bNmyZp+rXqdx48YpMDBQMTExF9xvjNFjjz2miIgIxcXFadOmTTX7XPE6XWo9c+bMUVxcnGJjY9W3b19lZmbW7AsNDVVsbKzi4+OVkJBQV5Ev6VJrWr16tfz8/Gp+vqZMmVKz71I/s1a51JpmzJhRs56YmBh5eXmppKREkutep7y8PPXv319RUVGKjo7WG2+8cd4x7nZ/clkGtaKqqsqEh4ebPXv2mDNnzpi4uDiTnZ19zjFvv/22efDBB40xxnzyySfmzjvvNMYYk52dbeLi4kxFRYXZu3evCQ8PN1VVVXW+hh+7nPWsXLnSlJeXG2OMeeedd2rWY4wxzZs3r9O8l+Ny1vTBBx+YRx555Lxzi4uLTVhYmCkuLjYlJSUmLCzMlJSU1FX0i7qcNf3Ym2++ae6///6a713xOhljzJo1a8zGjRtNdHT0BfcvXrzYDBo0yDgcDrN+/XrTu3dvY4zrXqdLrWfdunU1OZcsWVKzHmOM6dixoyksLKyTnFfiUmtatWqVueWWW87bfqU/s3XpUmv6sc8//9z079+/5ntXvU4HDx40GzduNMYYc/LkSRMZGXnef293uz+5KiZYtSQjI0MREREKDw9Xo0aNNGrUKKWnp59zTHp6uu69915J0siRI/XVV1/JGKP09HSNGjVKjRs3VlhYmCIiIpSRkWHFMmpcznr69++vZs2aSZL69Omj/Px8K6JetstZ08UsX75cSUlJ8vf3V6tWrZSUlKRly5bVcuJLu9I1ffLJJxo9enQdJvx5+vXrJ39//4vuT09P19ixY2Wz2dSnTx8dP35chw4dctnrdKn19O3bV61atZLkHvcl6dJruphfcj+sbVeyJne5LwUFBalHjx6SpBYtWqhbt24qKCg45xh3uz+5KgpWLSkoKFD79u1rvg8JCTnvh/jHx3h7e8vPz0/FxcWXdW5du9JMM2fO1ODBg2u+r6ioUEJCgvr06aPPPvusVrNerstd0/z58xUXF6eRI0cqLy/vis6ta1eSa//+/dq3b59uvPHGmm2ueJ0ux8XW7arX6Ur8933JZrNpwIAB6tmzp1JTUy1MduXWr1+v7t27a/DgwcrOzpbkuvelK3Hq1CktW7ZMycnJNdvc4Trl5uZq8+bNSkxMPGe7J9+f6pK31QHgef7xj3/IbrdrzZo1Ndv279+v4OBg7d27VzfeeKNiY2PVqVMnC1Nenttuu02jR49W48aN9d577+nee+/VypUrrY7lFHPnztXIkSPl5eVVs81dr5OnWrVqlWbOnKm1a9fWbFu7dq2Cg4N19OhRJSUlqWvXrurXr5+FKS9Pjx49tH//fvn4+GjJkiUaNmyYcnJyrI7lFAsXLtS11157zrTL1a9TWVmZkpOT9frrr8vX19fqOB6JCVYtCQ4Orpl2SFJ+fr6Cg4MvekxVVZVOnDihgICAyzq3rl1upi+//FIvv/yyPv/8czVu3Pic8yUpPDxcN9xwgzZv3lz7oS/hctYUEBBQs44HHnhAGzduvOxzrXAluebOnXveUxqueJ0ux8XW7arX6XJkZWXpgQceUHp6ugICAmq2/yd/YGCghg8fbvnLBy6Xr6+vfHx8JElDhgxRZWWlioqK3Poa/cdP3Zdc8TpVVlYqOTlZd999t0aMGHHefk+8P1nC6heBearKykoTFhZm9u7dW/PCza1bt55zzFtvvXXOi9zvuOMOY4wxW7duPedF7mFhYZa/yP1y1rNp0yYTHh5udu3adc72kpISU1FRYYwxprCw0ERERLjEi1gvZ00HDx6s+XrBggUmMTHRGPPvF3uGhoaakpISU1JSYkJDQ01xcXGd5r+Qy1mTMcZs377ddOzY0Tgcjpptrnqd/mPfvn0XfbHxokWLznlRbq9evYwxrnudjPnp9ezfv9906tTJrFu37pztZWVl5uTJkzVfX3PNNWbp0qW1nvVy/dSaDh06VPPztmHDBtO+fXvjcDgu+2fWKj+1JmOMOX78uGnVqpUpKyur2ebK18nhcJh77rnH/Pa3v73oMe54f3JFFKxatHjxYhMZGWnCw8PNSy+9ZIwx5tlnnzXp6enGGGNOnz5tRo4caTp16mR69epl9uzZU3PuSy+9ZMLDw03nzp3NkiVLLMn/3y61nptuuskEBgaa7t27m+7du5vbbrvNGPPvd0TFxMSYuLg4ExMTY95//33L1vDfLrWmp556ykRFRZm4uDhzww03mO3bt9ecO3PmTNOpUyfTqVMn8/e//92S/BdyqTUZY8zzzz9vnnzyyXPOc+XrNGrUKNOuXTvj7e1tgoODzfvvv2/effdd8+677xpj/v2g8fDDD5vw8HATExNjvv/++5pzXfE6XWo948ePNy1btqy5L/Xs2dMYY8yePXtMXFyciYuLM1FRUTXX1xVcak1//etfa+5LiYmJ55THC/3MuoJLrcmYf7/T+K677jrnPFe+Tt98842RZGJjY2t+vhYvXuzW9ydXxSe5AwAAOBmvwQIAAHAyChYAAICTUbAAAACcjIIFAADgZBQsAAAAJ6NgAQAAOBkFCwAAwMkoWAAAAE5GwQIAAHAyChYAAICTUbAAAACcjIIFAADgZBQsAAAAJ6NgAQAAOBkFCwAAwMkoWAAAAE5GwQIAAHAyChYAAICTUbAAAACcjIIFAADgZBQsAAAAJ6NgAQAAOBkFCwAAwMkoWAAAAE5GwQIAAHAyChYAAICTUbAAAACcjIIFAADgZP8f+3qaOt3KImkAAAAASUVORK5CYII\u003d style\u003d\u0027width\u003dauto;height:auto\u0027\u003e\u003cdiv\u003e\n"
+          },
+          {
+            "type": "HTML",
+            "data": "Traceback (most recent call last):\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\n  File \"/usr/zeppelin/interpreter/lib/python/backend_zinline.py\", line 299, in displayhook\n    show()\n  File \"/usr/zeppelin/interpreter/lib/python/backend_zinline.py\", line 71, in __call__\n    manager.show(**kwargs)\n  File \"/usr/zeppelin/interpreter/lib/python/backend_zinline.py\", line 204, in show\n    zdisplay(self.canvas.figure, **kwargs)\n  File \"/usr/zeppelin/interpreter/lib/python/backend_zinline.py\", line 286, in zdisplay\n    src \u003d fig.canvas.manager.angular_bind(**kwargs)\n  File \"/usr/zeppelin/interpreter/lib/python/backend_zinline.py\", line 158, in angular_bind\n    src \u003d self.canvas.get_bytes(**kwargs)\n  File \"/usr/zeppelin/interpreter/lib/python/backend_zinline.py\", line 97, in get_bytes\n    byte_str \u003d b\"data:image/%s;base64,\" %fmt\nTypeError: unsupported operand type(s) for %: \u0027bytes\u0027 and \u0027bytes\u0027\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488611965885_871254428",
+      "id": "20170304-071925_1030527349",
+      "dateCreated": "Mar 4, 2017 7:19:25 AM",
+      "dateStarted": "Mar 4, 2017 7:21:47 AM",
+      "dateFinished": "Mar 4, 2017 7:21:52 AM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nimport tushare as ts\nts",
+      "user": "anonymous",
+      "dateUpdated": "Feb 27, 2017 12:05:48 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u003cmodule \u0027tushare\u0027 from \u0027/usr/local/lib/python3.4/dist-packages/tushare/__init__.py\u0027\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488196993170_-1792523593",
+      "id": "20170227-120313_400804978",
+      "dateCreated": "Feb 27, 2017 12:03:13 PM",
+      "dateStarted": "Feb 27, 2017 12:05:48 PM",
+      "dateFinished": "Feb 27, 2017 12:05:51 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "pip list",
+      "user": "anonymous",
+      "dateUpdated": "Mar 4, 2017 7:24:36 AM",
+      "config": {
+        "colWidth": 5.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 151.54998779296875,
+              "optionOpen": false
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "DEPRECATION: The default format will switch to columns in the future. You can use --format\u003d(legacy|columns) (or define a format\u003d(legacy|columns) in your pip.conf under the [list] section) to disable this warning.\nbackports-abc (0.5)\nbeautifulsoup4 (4.5.3)\nbokeh (0.12.4)\ncycler (0.10.0)\nJinja2 (2.9.5)\nlxml (3.7.3)\nMarkupSafe (0.23)\nmatplotlib (2.0.0)\nnumpy (1.12.0)\npandas (0.19.2)\npandasql (0.7.3)\npip (9.0.1)\npy4j (0.10.4)\npyparsing (2.1.10)\npyspark (2.1.0-without.hadoop)\npython-dateutil (2.6.0)\npytz (2016.10)\nPyYAML (3.12)\nrequests (2.13.0)\nscipy (0.18.1)\nsetuptools (5.5.1)\nsix (1.10.0)\nSQLAlchemy (1.1.5)\ntornado (4.4.2)\ntushare (0.6.8)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1487989090637_-2084440993",
+      "id": "20170225-021810_2055491747",
+      "dateCreated": "Feb 25, 2017 2:18:10 AM",
+      "dateStarted": "Mar 4, 2017 7:24:36 AM",
+      "dateFinished": "Mar 4, 2017 7:24:38 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "apt update -y \u0026\u0026 apt upgrade -y",
+      "user": "anonymous",
+      "dateUpdated": "Mar 4, 2017 7:23:33 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\nWARNING: apt does not have a stable CLI interface yet. Use with caution in scripts.\n\nGet:1 http://security.debian.org jessie/updates InRelease [63.1 kB]\nIgn http://deb.debian.org jessie InRelease\nGet:2 http://deb.debian.org jessie-updates InRelease [145 kB]\nHit http://deb.debian.org jessie Release.gpg\nHit http://deb.debian.org jessie Release\nGet:3 http://security.debian.org jessie/updates/main amd64 Packages [442 kB]\nGet:4 http://deb.debian.org jessie-updates/main amd64 Packages [17.6 kB]\nGet:5 http://deb.debian.org jessie/main amd64 Packages [9,049 kB]\nFetched 9,716 kB in 7s (1,225 kB/s)\nReading package lists...\nBuilding dependency tree...\nReading state information...\nAll packages are up to date.\n\nWARNING: apt does not have a stable CLI interface yet. Use with caution in scripts.\n\nReading package lists...\nBuilding dependency tree...\nReading state information...\n0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1487991366908_1461849271",
+      "id": "20170225-025606_1054630532",
+      "dateCreated": "Feb 25, 2017 2:56:06 AM",
+      "dateStarted": "Mar 4, 2017 7:23:33 AM",
+      "dateFinished": "Mar 4, 2017 7:23:49 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\n",
+      "user": "anonymous",
+      "dateUpdated": "Feb 25, 2017 2:34:08 AM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1487990048351_1872107091",
+      "id": "20170225-023408_651305128",
+      "dateCreated": "Feb 25, 2017 2:34:08 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Shell",
+  "id": "2CA1AEZZJ",
+  "angularObjects": {
+    "2C95MKHGJ:shared_process": [],
+    "2CAM6X5NB:shared_process": [],
+    "2C9WG4M62:shared_process": [],
+    "2CB66CEAD:shared_process": [],
+    "2C9PNCCYW:shared_process": [],
+    "2CAF88TQ9:shared_process": [],
+    "2CB3CXC5U:shared_process": [],
+    "2CCM15GZZ:shared_process": [],
+    "2CCJXAJ4A:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}

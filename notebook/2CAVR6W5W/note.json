@@ -1,0 +1,843 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\n# 基本面分析\n\n参考 https://my.oschina.net/u/2306127/blog，by openthings@163.com。\n \n#### 盘面分析\n* 通过沪深上市公司基本情况表，生成逐年的指标表。\n* 比较逐年的上市股份数量、收益率等指标及趋势。\n* 比较创业板和主板的各项指标逐年变化及趋势。\n",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 1:16:54 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e基本面分析\u003c/h1\u003e\n\u003cp\u003e参考 \u003ca href\u003d\"https://my.oschina.net/u/2306127/blog，by\"\u003ehttps://my.oschina.net/u/2306127/blog，by\u003c/a\u003e \u003ca href\u003d\"mailto:\u0026#x6f;\u0026#x70;\u0026#101;n\u0026#116;\u0026#x68;\u0026#x69;\u0026#110;\u0026#x67;s@\u0026#49;6\u0026#x33;\u0026#46;\u0026#x63;\u0026#x6f;\u0026#x6d;。\"\u003e\u0026#x6f;\u0026#x70;\u0026#101;n\u0026#116;\u0026#x68;\u0026#x69;\u0026#110;\u0026#x67;s@\u0026#49;6\u0026#x33;\u0026#46;\u0026#x63;\u0026#x6f;\u0026#x6d;。\u003c/a\u003e\u003c/p\u003e\n\u003ch4\u003e盘面分析\u003c/h4\u003e\n\u003cul\u003e\n  \u003cli\u003e通过沪深上市公司基本情况表，生成逐年的指标表。\u003c/li\u003e\n  \u003cli\u003e比较逐年的上市股份数量、收益率等指标及趋势。\u003c/li\u003e\n  \u003cli\u003e比较创业板和主板的各项指标逐年变化及趋势。\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488443794940_-1733137214",
+      "id": "20170302-083634_459734374",
+      "dateCreated": "Mar 2, 2017 8:36:34 AM",
+      "dateStarted": "Mar 3, 2017 1:17:49 PM",
+      "dateFinished": "Mar 3, 2017 1:17:49 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "盘面数据获取与转换函数。",
+      "text": "import tushare as ts\nimport pandas as pd\n\nimport datetime\nimport matplotlib as mpl\nimport matplotlib.pyplot as plt\n\nfrom matplotlib.dates import DateFormatter, WeekdayLocator, DayLocator, MONDAY,YEARLY,date2num\nfrom matplotlib.finance import quotes_historical_yahoo_ohlc, candlestick_ohlc\n\ndef df2tab(pdf_index):\n    a \u003d\"\"\"%table\\r index\\t name\\t industry\\t area\\t pe\\t outstanding\\t totals\\t totalAssets\\r \"\"\"\n    for idx in pdf_index.index:\n        a \u003d a + str(idx) + \"\\t\" \\\n            + str(pdf_index.ix[idx][\u0027name\u0027]) + \"\\t\" \\\n            + str(pdf_index.ix[idx][\u0027industry\u0027]) + \"\\t\" \\\n            + str(pdf_index.ix[idx][\u0027area\u0027]) + \"\\t\" \\\n            + str(pdf_index.ix[idx][\u0027pe\u0027]) + \"\\t\" \\\n            + str(pdf_index.ix[idx][\u0027outstanding\u0027]) + \"\\t\" \\\n            + str(pdf_index.ix[idx][\u0027totals\u0027]) + \"\\t\" \\\n            + str(pdf_index.ix[idx][\u0027totalAssets\u0027]) + \"\\r\"\n    return a\n\ndef df2tabx(pdfx):\n    strTab \u003d\"%table\\r\"\n    for icol in pdfx.columns:\n        strTab \u003d strTab + icol + \"\\t\"\n    strTab \u003d strTab + \"\\r\"\n    \n    #     \n    for idx in pdfx.index:\n        for icol in pdfx.columns:\n            strTab \u003d strTab + str(pdfx.ix[idx][icol]) + \"\\t\"\n        strTab \u003d strTab + \u0027\\r\u0027\n    return strTab\n\ndef getIndex_All():\n    df \u003d ts.get_index()\n    return df2tabx(df)\n\n# 生成逐年发行新股的摘要表.\ndef getsummary(df_sel,ystart,yend):\n    idx \u003d range(ystart,yend) \n    df_period \u003d pd.DataFrame(index\u003didx,columns\u003d[\u0027period\u0027,\u0027totals\u0027,\u0027holders\u0027,\u0027outstanding\u0027,\u0027outstandingrate\u0027,\n                                                \u0027esp\u0027,\u0027pe\u0027,\u0027npr\u0027])\n    for period in idx:\n        df_year \u003d df_sel[(df_sel.timeToMarket\u003e(period)*10000) \u0026 (df_sel.timeToMarket\u003c(period+1)*10000)]\n        if (df_year.totals.sum()\u003d\u003d0):\n            outstandingrate \u003d 0 \n        else:\n            outstandingrate \u003d df_year.outstanding.sum()/df_year.totals.sum()\n        \n        df_period.loc[period] \u003d {\"period\":str(period),\n                                 \"totalcount\":df_year.totals.count(),\n                                 \"holders\":df_year.holders.sum(),\n                                 \"totals\":df_year.totals.sum(),\n                                 \"outstanding\":df_year.outstanding.sum(),\n                                 \"outstandingrate\":outstandingrate,\n                                 \"esp\":df_year.esp.mean(),\n                                 \"pe\":df_year.pe.mean(),\n                                 \"npr\":df_year.npr.mean()\n                                }\n                                \n    df_period.index \u003d (df_period.period)\n    return df_period\n    \n    ",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 1:16:56 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1488443891207_2084881008",
+      "id": "20170302-083811_2066326197",
+      "dateCreated": "Mar 2, 2017 8:38:11 AM",
+      "dateStarted": "Mar 3, 2017 1:17:49 PM",
+      "dateFinished": "Mar 3, 2017 1:17:49 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "获得盘面信息。",
+      "text": "df\u003dts.get_stock_basics()",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 1:17:17 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1488444340105_421451170",
+      "id": "20170302-084540_1949486031",
+      "dateCreated": "Mar 2, 2017 8:45:40 AM",
+      "dateStarted": "Mar 3, 2017 1:17:50 PM",
+      "dateFinished": "Mar 3, 2017 1:17:57 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "盘面情况表。",
+      "text": "print(df2tabx(df.head(10)))",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 1:17:27 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "lineChart": {}
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "name",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "esp",
+                  "index": 11.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\n  File \"\u003cstdin\u003e\", line 10, in df2tabx\nTypeError: \u0027str\u0027 object is not callable\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488445798722_1841413744",
+      "id": "20170302-090958_1144014874",
+      "dateCreated": "Mar 2, 2017 9:09:58 AM",
+      "dateStarted": "Mar 3, 2017 1:17:50 PM",
+      "dateFinished": "Mar 3, 2017 1:17:57 PM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "根据盘面数据生成每一年的新股发行表。",
+      "text": "df_total \u003d getsummary(df,2000,2017) #得到2000～2017年新股发行表。\ntab_total \u003d df2tabx(df_total)       #转为table格式。",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 6:06:00 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\n  File \"\u003cstdin\u003e\", line 13, in getsummary\nTypeError: \u0027str\u0027 object is not callable\nTraceback (most recent call last):\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\n  File \"\u003cstdin\u003e\", line 10, in df2tabx\nTypeError: \u0027str\u0027 object is not callable\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488444705840_-1529673444",
+      "id": "20170302-085145_1649231963",
+      "dateCreated": "Mar 2, 2017 8:51:45 AM",
+      "dateStarted": "Mar 3, 2017 1:17:58 PM",
+      "dateFinished": "Mar 3, 2017 1:17:58 PM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "股东人数（按公司上市年度）",
+      "text": "print(tab_total)",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 6:17:12 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "lineChart": {
+                  "forceY": false
+                },
+                "multiBarChart": {
+                  "stacked": true
+                },
+                "stackedAreaChart": {
+                  "style": "stack"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "period",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "holders",
+                  "index": 2.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "period\ttotals\tholders\toutstanding\toutstandingrate\tesp\tpe\tnpr\t\n2000\t2331.79\t8478952\t1849.18\t0.793030247149\t0.201315789474\t168.443609023\t2.24601503759\t\n2001\t3017.66\t6813697\t2247.88\t0.744908306436\t0.315746835443\t148.091012658\t4.31607594937\t\n2002\t1467.11\t5403911\t1246.61\t0.849704521133\t0.248720588235\t1188.18985294\t6.71926470588\t\n2003\t1473.03\t5893662\t1206.12\t0.818802061058\t0.203029850746\t226.370149254\t5.68343283582\t\n2004\t1256.93\t5677135\t925.62\t0.736413324529\t0.220070707071\t105.800505051\t7.14464646465\t\n2005\t222.28\t730136\t171.14\t0.769929818247\t0.299857142857\t65.7885714286\t9.20857142857\t\n2006\t7976.38\t6196277\t6060.02\t0.759745649029\t0.210166666667\t70.1492424242\t11.793030303\t\n2007\t8457.59\t11234291\t4708.13\t0.556675128494\t0.231484126984\t179.743412698\t7.42944444444\t\n2008\t1608.34\t6099746\t1240.1\t0.771043436089\t0.169766233766\t254.499220779\t5.45844155844\t\n2009\t1573.45\t6277605\t1299.72\t0.826031967968\t0.269255102041\t105.581632653\t10.053877551\t\n2010\t7379.42\t16847236\t6127.24\t0.830314577568\t0.193341954023\t223.332442529\t9.20867816092\t\n2011\t2634.54\t10217595\t1902.68\t0.722205774063\t0.196259786477\t116.521032028\t-12.391316726\t\n2012\t1443.2\t5272723\t1076.02\t0.745579268293\t0.193509677419\t224.580709677\t9.43761290323\t\n2013\t136.01\t252233\t136.01\t1.0\t0.43\t10.16\t20.36\t\n2014\t698.9\t2841257\t380.81\t0.544870510803\t0.343784\t128.522\t11.3288\t\n2015\t1344.34\t6742524\t502.34\t0.37367035125\t0.372573991031\t190.720672646\t13.9556053812\t\n2016\t821.19\t10920842\t140.94\t0.17162897746\t0.581145374449\t104.742422907\t15.8852863436\t\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488459120398_-15035060",
+      "id": "20170302-125200_1173963510",
+      "dateCreated": "Mar 2, 2017 12:52:00 PM",
+      "dateStarted": "Mar 3, 2017 1:17:58 PM",
+      "dateFinished": "Mar 3, 2017 1:17:58 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "总股份与流通股份（亿）",
+      "text": "print(tab_total)",
+      "user": "anonymous",
+      "dateUpdated": "Mar 2, 2017 1:40:13 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "lineChart": {
+                  "forceY": false
+                },
+                "multiBarChart": {
+                  "stacked": false
+                },
+                "stackedAreaChart": {
+                  "style": "expand"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "period",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "totals",
+                  "index": 1.0,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "outstanding",
+                  "index": 3.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "period\ttotals\tholders\toutstanding\toutstandingrate\tesp\tpe\tnpr\t\n2000\t2331.79\t8478952\t1849.18\t0.793030247149\t0.201315789474\t168.443609023\t2.24601503759\t\n2001\t3017.66\t6813697\t2247.88\t0.744908306436\t0.315746835443\t148.091012658\t4.31607594937\t\n2002\t1467.11\t5403911\t1246.61\t0.849704521133\t0.248720588235\t1188.18985294\t6.71926470588\t\n2003\t1473.03\t5893662\t1206.12\t0.818802061058\t0.203029850746\t226.370149254\t5.68343283582\t\n2004\t1256.93\t5677135\t925.62\t0.736413324529\t0.220070707071\t105.800505051\t7.14464646465\t\n2005\t222.28\t730136\t171.14\t0.769929818247\t0.299857142857\t65.7885714286\t9.20857142857\t\n2006\t7976.38\t6196277\t6060.02\t0.759745649029\t0.210166666667\t70.1492424242\t11.793030303\t\n2007\t8457.59\t11234291\t4708.13\t0.556675128494\t0.231484126984\t179.743412698\t7.42944444444\t\n2008\t1608.34\t6099746\t1240.1\t0.771043436089\t0.169766233766\t254.499220779\t5.45844155844\t\n2009\t1573.45\t6277605\t1299.72\t0.826031967968\t0.269255102041\t105.581632653\t10.053877551\t\n2010\t7379.42\t16847236\t6127.24\t0.830314577568\t0.193341954023\t223.332442529\t9.20867816092\t\n2011\t2634.54\t10217595\t1902.68\t0.722205774063\t0.196259786477\t116.521032028\t-12.391316726\t\n2012\t1443.2\t5272723\t1076.02\t0.745579268293\t0.193509677419\t224.580709677\t9.43761290323\t\n2013\t136.01\t252233\t136.01\t1.0\t0.43\t10.16\t20.36\t\n2014\t698.9\t2841257\t380.81\t0.544870510803\t0.343784\t128.522\t11.3288\t\n2015\t1344.34\t6742524\t502.34\t0.37367035125\t0.372573991031\t190.720672646\t13.9556053812\t\n2016\t821.19\t10920842\t140.94\t0.17162897746\t0.581145374449\t104.742422907\t15.8852863436\t\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488455060490_-1826746762",
+      "id": "20170302-114420_858242450",
+      "dateCreated": "Mar 2, 2017 11:44:20 AM",
+      "dateStarted": "Mar 3, 2017 1:17:58 PM",
+      "dateFinished": "Mar 3, 2017 1:17:58 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "流通率（按上市年份）",
+      "text": "print(tab_total)",
+      "user": "anonymous",
+      "dateUpdated": "Mar 2, 2017 1:39:31 PM",
+      "config": {
+        "colWidth": 6.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "lineChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "lineChart": {
+                  "forceY": true
+                },
+                "multiBarChart": {
+                  "stacked": true
+                },
+                "stackedAreaChart": {
+                  "style": "expand"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "period",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "outstandingrate",
+                  "index": 4.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "period\ttotals\tholders\toutstanding\toutstandingrate\tesp\tpe\tnpr\t\n2000\t2331.79\t8478952\t1849.18\t0.793030247149\t0.201315789474\t168.443609023\t2.24601503759\t\n2001\t3017.66\t6813697\t2247.88\t0.744908306436\t0.315746835443\t148.091012658\t4.31607594937\t\n2002\t1467.11\t5403911\t1246.61\t0.849704521133\t0.248720588235\t1188.18985294\t6.71926470588\t\n2003\t1473.03\t5893662\t1206.12\t0.818802061058\t0.203029850746\t226.370149254\t5.68343283582\t\n2004\t1256.93\t5677135\t925.62\t0.736413324529\t0.220070707071\t105.800505051\t7.14464646465\t\n2005\t222.28\t730136\t171.14\t0.769929818247\t0.299857142857\t65.7885714286\t9.20857142857\t\n2006\t7976.38\t6196277\t6060.02\t0.759745649029\t0.210166666667\t70.1492424242\t11.793030303\t\n2007\t8457.59\t11234291\t4708.13\t0.556675128494\t0.231484126984\t179.743412698\t7.42944444444\t\n2008\t1608.34\t6099746\t1240.1\t0.771043436089\t0.169766233766\t254.499220779\t5.45844155844\t\n2009\t1573.45\t6277605\t1299.72\t0.826031967968\t0.269255102041\t105.581632653\t10.053877551\t\n2010\t7379.42\t16847236\t6127.24\t0.830314577568\t0.193341954023\t223.332442529\t9.20867816092\t\n2011\t2634.54\t10217595\t1902.68\t0.722205774063\t0.196259786477\t116.521032028\t-12.391316726\t\n2012\t1443.2\t5272723\t1076.02\t0.745579268293\t0.193509677419\t224.580709677\t9.43761290323\t\n2013\t136.01\t252233\t136.01\t1.0\t0.43\t10.16\t20.36\t\n2014\t698.9\t2841257\t380.81\t0.544870510803\t0.343784\t128.522\t11.3288\t\n2015\t1344.34\t6742524\t502.34\t0.37367035125\t0.372573991031\t190.720672646\t13.9556053812\t\n2016\t821.19\t10920842\t140.94\t0.17162897746\t0.581145374449\t104.742422907\t15.8852863436\t\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488458864989_56748231",
+      "id": "20170302-124744_62981801",
+      "dateCreated": "Mar 2, 2017 12:47:44 PM",
+      "dateStarted": "Mar 3, 2017 1:17:58 PM",
+      "dateFinished": "Mar 3, 2017 1:17:58 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "净利润率(%)",
+      "text": "print(tab_total)",
+      "user": "anonymous",
+      "dateUpdated": "Mar 2, 2017 1:39:27 PM",
+      "config": {
+        "colWidth": 6.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "lineChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "lineChart": {
+                  "forceY": false,
+                  "lineWithFocus": false
+                },
+                "multiBarChart": {
+                  "stacked": true
+                },
+                "stackedAreaChart": {
+                  "style": "expand"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "period",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "npr",
+                  "index": 7.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "period\ttotals\tholders\toutstanding\toutstandingrate\tesp\tpe\tnpr\t\n2000\t2331.79\t8478952\t1849.18\t0.793030247149\t0.201315789474\t168.443609023\t2.24601503759\t\n2001\t3017.66\t6813697\t2247.88\t0.744908306436\t0.315746835443\t148.091012658\t4.31607594937\t\n2002\t1467.11\t5403911\t1246.61\t0.849704521133\t0.248720588235\t1188.18985294\t6.71926470588\t\n2003\t1473.03\t5893662\t1206.12\t0.818802061058\t0.203029850746\t226.370149254\t5.68343283582\t\n2004\t1256.93\t5677135\t925.62\t0.736413324529\t0.220070707071\t105.800505051\t7.14464646465\t\n2005\t222.28\t730136\t171.14\t0.769929818247\t0.299857142857\t65.7885714286\t9.20857142857\t\n2006\t7976.38\t6196277\t6060.02\t0.759745649029\t0.210166666667\t70.1492424242\t11.793030303\t\n2007\t8457.59\t11234291\t4708.13\t0.556675128494\t0.231484126984\t179.743412698\t7.42944444444\t\n2008\t1608.34\t6099746\t1240.1\t0.771043436089\t0.169766233766\t254.499220779\t5.45844155844\t\n2009\t1573.45\t6277605\t1299.72\t0.826031967968\t0.269255102041\t105.581632653\t10.053877551\t\n2010\t7379.42\t16847236\t6127.24\t0.830314577568\t0.193341954023\t223.332442529\t9.20867816092\t\n2011\t2634.54\t10217595\t1902.68\t0.722205774063\t0.196259786477\t116.521032028\t-12.391316726\t\n2012\t1443.2\t5272723\t1076.02\t0.745579268293\t0.193509677419\t224.580709677\t9.43761290323\t\n2013\t136.01\t252233\t136.01\t1.0\t0.43\t10.16\t20.36\t\n2014\t698.9\t2841257\t380.81\t0.544870510803\t0.343784\t128.522\t11.3288\t\n2015\t1344.34\t6742524\t502.34\t0.37367035125\t0.372573991031\t190.720672646\t13.9556053812\t\n2016\t821.19\t10920842\t140.94\t0.17162897746\t0.581145374449\t104.742422907\t15.8852863436\t\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488459021259_682175919",
+      "id": "20170302-125021_2009728458",
+      "dateCreated": "Mar 2, 2017 12:50:21 PM",
+      "dateStarted": "Mar 3, 2017 1:17:58 PM",
+      "dateFinished": "Mar 3, 2017 1:17:58 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n# 创业板分析",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 6:24:32 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e创业板分析\u003c/h1\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488460520336_1137065658",
+      "id": "20170302-131520_629312954",
+      "dateCreated": "Mar 2, 2017 1:15:20 PM",
+      "dateStarted": "Mar 3, 2017 1:17:50 PM",
+      "dateFinished": "Mar 3, 2017 1:17:50 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "创业板数据提取。",
+      "text": "df_cyb \u003d df[(df.index.astype(\u0027int\u0027)\u003e\u003d300000) \u0026 (df.index.astype(\u0027int\u0027)\u003c600000)]\ndf_cyb \u003d df_cyb.sort_index(ascending\u003dTrue)\ntab_cyb \u003d df2tabx(df_cyb)\n\ndf_total_cyb \u003d getsummary(df_cyb,2008,2017)\ntab_total_cyb \u003d df2tabx(df_total_cyb)",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 6:24:11 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {},
+        "title": true,
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\n  File \"\u003cstdin\u003e\", line 10, in df2tabx\nTypeError: \u0027str\u0027 object is not callable\nTraceback (most recent call last):\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\n  File \"\u003cstdin\u003e\", line 13, in getsummary\nTypeError: \u0027str\u0027 object is not callable\nTraceback (most recent call last):\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\n  File \"\u003cstdin\u003e\", line 10, in df2tabx\nTypeError: \u0027str\u0027 object is not callable\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488455071169_229751433",
+      "id": "20170302-114431_592616137",
+      "dateCreated": "Mar 2, 2017 11:44:31 AM",
+      "dateStarted": "Mar 3, 2017 1:17:58 PM",
+      "dateFinished": "Mar 3, 2017 1:17:59 PM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "创业板总股份与流通股份（亿）",
+      "text": "print(tab_total_cyb)",
+      "user": "anonymous",
+      "dateUpdated": "Mar 2, 2017 1:47:12 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "lineChart": {},
+                "multiBarChart": {
+                  "stacked": false
+                },
+                "stackedAreaChart": {
+                  "style": "stack"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "period",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "totals",
+                  "index": 1.0,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "outstanding",
+                  "index": 3.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "period\ttotals\tholders\toutstanding\toutstandingrate\tesp\tpe\tnpr\t\n2008\t0\t0\t0\t0\tnan\tnan\tnan\t\n2009\t269.45\t1370457\t195.68\t0.726220077937\t0.251\t106.2825\t12.5422222222\t\n2010\t775.3\t3851644\t560.19\t0.722546111183\t0.175777777778\t246.182051282\t9.17299145299\t\n2011\t717.4\t3116240\t497.55\t0.693546138835\t0.175748031496\t134.621968504\t6.57921259843\t\n2012\t371.78\t1773902\t245.43\t0.660148474905\t0.183324324324\t191.102162162\t12.1817567568\t\n2013\t0\t0\t0\t0\tnan\tnan\tnan\t\n2014\t161.63\t902942\t82.24\t0.508816432593\t0.283058823529\t156.429803922\t12.0101960784\t\n2015\t255.66\t1646950\t108.28\t0.423531252445\t0.332770114943\t203.78862069\t15.0135632184\t\n2016\t84.33\t2272681\t20.34\t0.241195304162\t0.595756410256\t142.272435897\t17.3065384615\t\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488460079766_1404084684",
+      "id": "20170302-130759_1906931805",
+      "dateCreated": "Mar 2, 2017 1:07:59 PM",
+      "dateStarted": "Mar 3, 2017 1:17:59 PM",
+      "dateFinished": "Mar 3, 2017 1:17:59 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "创业板流通率（%）",
+      "text": "print(tab_total_cyb)",
+      "user": "anonymous",
+      "dateUpdated": "Mar 2, 2017 1:46:36 PM",
+      "config": {
+        "colWidth": 6.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "lineChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "lineChart": {},
+                "multiBarChart": {
+                  "stacked": false
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "period",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "outstandingrate",
+                  "index": 4.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "period\ttotals\tholders\toutstanding\toutstandingrate\tesp\tpe\tnpr\t\n2008\t0\t0\t0\t0\tnan\tnan\tnan\t\n2009\t269.45\t1370457\t195.68\t0.726220077937\t0.251\t106.2825\t12.5422222222\t\n2010\t775.3\t3851644\t560.19\t0.722546111183\t0.175777777778\t246.182051282\t9.17299145299\t\n2011\t717.4\t3116240\t497.55\t0.693546138835\t0.175748031496\t134.621968504\t6.57921259843\t\n2012\t371.78\t1773902\t245.43\t0.660148474905\t0.183324324324\t191.102162162\t12.1817567568\t\n2013\t0\t0\t0\t0\tnan\tnan\tnan\t\n2014\t161.63\t902942\t82.24\t0.508816432593\t0.283058823529\t156.429803922\t12.0101960784\t\n2015\t255.66\t1646950\t108.28\t0.423531252445\t0.332770114943\t203.78862069\t15.0135632184\t\n2016\t84.33\t2272681\t20.34\t0.241195304162\t0.595756410256\t142.272435897\t17.3065384615\t\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488460616620_48565047",
+      "id": "20170302-131656_27091980",
+      "dateCreated": "Mar 2, 2017 1:16:56 PM",
+      "dateStarted": "Mar 3, 2017 1:17:59 PM",
+      "dateFinished": "Mar 3, 2017 1:17:59 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "创业板净利润率(%)",
+      "text": "print(tab_total_cyb)",
+      "user": "anonymous",
+      "dateUpdated": "Mar 2, 2017 1:46:30 PM",
+      "config": {
+        "colWidth": 6.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "lineChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "lineChart": {},
+                "multiBarChart": {
+                  "stacked": false
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "period",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "npr",
+                  "index": 7.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "period\ttotals\tholders\toutstanding\toutstandingrate\tesp\tpe\tnpr\t\n2008\t0\t0\t0\t0\tnan\tnan\tnan\t\n2009\t269.45\t1370457\t195.68\t0.726220077937\t0.251\t106.2825\t12.5422222222\t\n2010\t775.3\t3851644\t560.19\t0.722546111183\t0.175777777778\t246.182051282\t9.17299145299\t\n2011\t717.4\t3116240\t497.55\t0.693546138835\t0.175748031496\t134.621968504\t6.57921259843\t\n2012\t371.78\t1773902\t245.43\t0.660148474905\t0.183324324324\t191.102162162\t12.1817567568\t\n2013\t0\t0\t0\t0\tnan\tnan\tnan\t\n2014\t161.63\t902942\t82.24\t0.508816432593\t0.283058823529\t156.429803922\t12.0101960784\t\n2015\t255.66\t1646950\t108.28\t0.423531252445\t0.332770114943\t203.78862069\t15.0135632184\t\n2016\t84.33\t2272681\t20.34\t0.241195304162\t0.595756410256\t142.272435897\t17.3065384615\t\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488460569732_-897425229",
+      "id": "20170302-131609_1450995587",
+      "dateCreated": "Mar 2, 2017 1:16:09 PM",
+      "dateStarted": "Mar 3, 2017 1:17:59 PM",
+      "dateFinished": "Mar 3, 2017 1:17:59 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1488460096083_-677391542",
+      "id": "20170302-130816_1066500903",
+      "dateCreated": "Mar 2, 2017 1:08:16 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "基本面/盘面分析",
+  "id": "2CAVR6W5W",
+  "angularObjects": {
+    "2C95MKHGJ:shared_process": [],
+    "2CAM6X5NB:shared_process": [],
+    "2C9WG4M62:shared_process": [],
+    "2C9PNCCYW:shared_process": [],
+    "2CB66CEAD:shared_process": [],
+    "2CAF88TQ9:shared_process": [],
+    "2CB3CXC5U:shared_process": [],
+    "2CCM15GZZ:shared_process": [],
+    "2CCJXAJ4A:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}

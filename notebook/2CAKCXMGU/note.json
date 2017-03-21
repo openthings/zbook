@@ -1,0 +1,283 @@
+{
+  "paragraphs": [
+    {
+      "text": "%sh\nexport PYTHONPATH\u003d$SPARK_HOME/python:$SPARK_HOME/python/build:$PYTHONPATH\n#pip install pyspark",
+      "user": "anonymous",
+      "dateUpdated": "Feb 26, 2017 4:33:03 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1488083464872_-695712656",
+      "id": "20170226-043104_1589354526",
+      "dateCreated": "Feb 26, 2017 4:31:04 AM",
+      "dateStarted": "Feb 26, 2017 4:33:03 AM",
+      "dateFinished": "Feb 26, 2017 4:33:03 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\necho $SPARK_HOME",
+      "user": "anonymous",
+      "dateUpdated": "Feb 26, 2017 8:34:44 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "/usr/spark-2.1.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488084391665_858970637",
+      "id": "20170226-044631_856847884",
+      "dateCreated": "Feb 26, 2017 4:46:31 AM",
+      "dateStarted": "Feb 26, 2017 8:34:45 AM",
+      "dateFinished": "Feb 26, 2017 8:34:45 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nfrom pyspark.sql.types import *\nfrom pyspark.sql import functions \nimport pandas as pd",
+      "user": "anonymous",
+      "dateUpdated": "Feb 26, 2017 1:43:18 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\nImportError: No module named \u0027pyspark\u0027\nTraceback (most recent call last):\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\nImportError: No module named \u0027pyspark\u0027\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488034478671_247267716",
+      "id": "20170225-145438_1051194778",
+      "dateCreated": "Feb 25, 2017 2:54:38 PM",
+      "dateStarted": "Feb 26, 2017 1:43:18 AM",
+      "dateFinished": "Feb 26, 2017 1:43:19 AM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nimport pyspark\n\n\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "Feb 26, 2017 1:58:12 PM",
+      "config": {
+        "colWidth": 3.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 107.44999694824219,
+              "optionOpen": false
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\n\n\n\u003cconsole\u003e:3: error: \u0027.\u0027 expected but \u0027;\u0027 found.\nprint(\"\")\n^\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488034483599_-210183402",
+      "id": "20170225-145443_1513331784",
+      "dateCreated": "Feb 25, 2017 2:54:43 PM",
+      "dateStarted": "Feb 26, 2017 8:38:02 AM",
+      "dateFinished": "Feb 26, 2017 8:38:03 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\n",
+      "user": "anonymous",
+      "dateUpdated": "Feb 26, 2017 2:04:07 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1488101382976_2009131911",
+      "id": "20170226-092942_664098618",
+      "dateCreated": "Feb 26, 2017 9:29:42 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\ncat ./conf/interpreter.json",
+      "user": "anonymous",
+      "dateUpdated": "Feb 26, 2017 2:04:14 PM",
+      "config": {
+        "colWidth": 5.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 338.0,
+              "optionOpen": false
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "{\n  \"interpreterSettings\": {\n    \"2C95MKHGJ\": {\n      \"id\": \"2C95MKHGJ\",\n      \"name\": \"jdbc\",\n      \"group\": \"jdbc\",\n      \"properties\": {\n        \"default.password\": \"\",\n        \"zeppelin.jdbc.auth.type\": \"\",\n        \"common.max_count\": \"1000\",\n        \"zeppelin.jdbc.principal\": \"\",\n        \"default.user\": \"gpadmin\",\n        \"default.url\": \"jdbc:postgresql://localhost:5432/\",\n        \"default.driver\": \"org.postgresql.Driver\",\n        \"zeppelin.jdbc.keytab.location\": \"\",\n        \"zeppelin.jdbc.concurrent.use\": \"true\",\n        \"zeppelin.jdbc.concurrent.max_connection\": \"10\"\n      },\n      \"status\": \"READY\",\n      \"interpreterGroup\": [\n        {\n          \"name\": \"sql\",\n          \"class\": \"org.apache.zeppelin.jdbc.JDBCInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"language\": \"sql\",\n            \"editOnDblClick\": false\n          }\n        }\n      ],\n      \"dependencies\": [],\n      \"option\": {\n        \"remote\": true,\n        \"port\": -1,\n        \"perNote\": \"shared\",\n        \"perUser\": \"shared\",\n        \"isExistingProcess\": false,\n        \"setPermission\": false,\n        \"users\": [],\n        \"isUserImpersonate\": false\n      }\n    },\n    \"2CAM6X5NB\": {\n      \"id\": \"2CAM6X5NB\",\n      \"name\": \"md\",\n      \"group\": \"md\",\n      \"properties\": {\n        \"zeppelin.interpreter.localRepo\": \"/usr/zeppelin/local-repo/2CAM6X5NB\",\n        \"markdown.parser.type\": \"pegdown\"\n      },\n      \"status\": \"READY\",\n      \"interpreterGroup\": [\n        {\n          \"name\": \"md\",\n          \"class\": \"org.apache.zeppelin.markdown.Markdown\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"language\": \"markdown\",\n            \"editOnDblClick\": true\n          }\n        }\n      ],\n      \"dependencies\": [],\n      \"option\": {\n        \"remote\": true,\n        \"port\": -1,\n        \"perNote\": \"shared\",\n        \"perUser\": \"shared\",\n        \"isExistingProcess\": false,\n        \"setPermission\": false,\n        \"users\": [],\n        \"isUserImpersonate\": false\n      }\n    },\n    \"2CAF88TQ9\": {\n      \"id\": \"2CAF88TQ9\",\n      \"name\": \"elasticsearch\",\n      \"group\": \"elasticsearch\",\n      \"properties\": {\n        \"elasticsearch.port\": \"9300\",\n        \"elasticsearch.result.size\": \"10\",\n        \"elasticsearch.basicauth.password\": \"\",\n        \"elasticsearch.cluster.name\": \"elasticsearch\",\n        \"elasticsearch.host\": \"localhost\",\n        \"elasticsearch.basicauth.username\": \"\",\n        \"elasticsearch.client.type\": \"transport\"\n      },\n      \"status\": \"READY\",\n      \"interpreterGroup\": [\n        {\n          \"name\": \"elasticsearch\",\n          \"class\": \"org.apache.zeppelin.elasticsearch.ElasticsearchInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"editOnDblClick\": false\n          }\n        }\n      ],\n      \"dependencies\": [],\n      \"option\": {\n        \"remote\": true,\n        \"port\": -1,\n        \"perNote\": \"shared\",\n        \"perUser\": \"shared\",\n        \"isExistingProcess\": false,\n        \"setPermission\": false,\n        \"users\": [],\n        \"isUserImpersonate\": false\n      }\n    },\n    \"2CB66CEAD\": {\n      \"id\": \"2CB66CEAD\",\n      \"name\": \"spark\",\n      \"group\": \"spark\",\n      \"properties\": {\n        \"spark.cores.max\": \"\",\n        \"zeppelin.spark.printREPLOutput\": \"true\",\n        \"master\": \"local[*]\",\n        \"zeppelin.spark.maxResult\": \"1000\",\n        \"zeppelin.dep.localrepo\": \"local-repo\",\n        \"spark.app.name\": \"Zeppelin\",\n        \"spark.executor.memory\": \"\",\n        \"zeppelin.spark.importImplicit\": \"true\",\n        \"zeppelin.spark.sql.stacktrace\": \"false\",\n        \"zeppelin.spark.useHiveContext\": \"true\",\n        \"zeppelin.interpreter.localRepo\": \"/usr/zeppelin/local-repo/2CB66CEAD\",\n        \"zeppelin.spark.concurrentSQL\": \"false\",\n        \"args\": \"\",\n        \"zeppelin.pyspark.python\": \"python3\",\n        \"zeppelin.dep.additionalRemoteRepository\": \"spark-packages,http://dl.bintray.com/spark-packages/maven,false;\"\n      },\n      \"status\": \"DOWNLOADING_DEPENDENCIES\",\n      \"interpreterGroup\": [\n        {\n          \"name\": \"spark\",\n          \"class\": \"org.apache.zeppelin.spark.SparkInterpreter\",\n          \"defaultInterpreter\": true,\n          \"editor\": {\n            \"language\": \"scala\",\n            \"editOnDblClick\": false\n          }\n        },\n        {\n          \"name\": \"sql\",\n          \"class\": \"org.apache.zeppelin.spark.SparkSqlInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"language\": \"sql\",\n            \"editOnDblClick\": false\n          }\n        },\n        {\n          \"name\": \"dep\",\n          \"class\": \"org.apache.zeppelin.spark.DepInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"language\": \"scala\",\n            \"editOnDblClick\": false\n          }\n        },\n        {\n          \"name\": \"pyspark\",\n          \"class\": \"org.apache.zeppelin.spark.PySparkInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"language\": \"python\",\n            \"editOnDblClick\": false\n          }\n        }\n      ],\n      \"dependencies\": [],\n      \"option\": {\n        \"remote\": true,\n        \"port\": -1,\n        \"perNote\": \"shared\",\n        \"perUser\": \"shared\",\n        \"isExistingProcess\": false,\n        \"setPermission\": false,\n        \"users\": [],\n        \"isUserImpersonate\": false\n      }\n    },\n    \"2CB3CXC5U\": {\n      \"id\": \"2CB3CXC5U\",\n      \"name\": \"hbase\",\n      \"group\": \"hbase\",\n      \"properties\": {\n        \"zeppelin.hbase.test.mode\": \"false\",\n        \"hbase.ruby.sources\": \"lib/ruby\",\n        \"hbase.home\": \"/usr/lib/hbase/\"\n      },\n      \"status\": \"READY\",\n      \"interpreterGroup\": [\n        {\n          \"name\": \"hbase\",\n          \"class\": \"org.apache.zeppelin.hbase.HbaseInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"editOnDblClick\": false\n          }\n        }\n      ],\n      \"dependencies\": [],\n      \"option\": {\n        \"remote\": true,\n        \"port\": -1,\n        \"perNote\": \"shared\",\n        \"perUser\": \"shared\",\n        \"isExistingProcess\": false,\n        \"setPermission\": false,\n        \"users\": [],\n        \"isUserImpersonate\": false\n      }\n    },\n    \"2CCM15GZZ\": {\n      \"id\": \"2CCM15GZZ\",\n      \"name\": \"sh\",\n      \"group\": \"sh\",\n      \"properties\": {\n        \"zeppelin.shell.keytab.location\": \"\",\n        \"shell.command.timeout.millisecs\": \"600000\",\n        \"zeppelin.interpreter.localRepo\": \"/usr/zeppelin/local-repo/2CCM15GZZ\",\n        \"zeppelin.shell.principal\": \"\",\n        \"zeppelin.shell.auth.type\": \"\"\n      },\n      \"status\": \"READY\",\n      \"interpreterGroup\": [\n        {\n          \"name\": \"sh\",\n          \"class\": \"org.apache.zeppelin.shell.ShellInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"language\": \"sh\",\n            \"editOnDblClick\": false\n          }\n        }\n      ],\n      \"dependencies\": [],\n      \"option\": {\n        \"remote\": true,\n        \"port\": -1,\n        \"perNote\": \"shared\",\n        \"perUser\": \"shared\",\n        \"isExistingProcess\": false,\n        \"setPermission\": false,\n        \"users\": [],\n        \"isUserImpersonate\": false\n      }\n    },\n    \"2C9PNCCYW\": {\n      \"id\": \"2C9PNCCYW\",\n      \"name\": \"python\",\n      \"group\": \"python\",\n      \"properties\": {\n        \"zeppelin.python\": \"python\",\n        \"zeppelin.python.maxResult\": \"1000\",\n        \"zeppelin.interpreter.localRepo\": \"/usr/zeppelin/local-repo/2C9PNCCYW\"\n      },\n      \"status\": \"READY\",\n      \"interpreterGroup\": [\n        {\n          \"name\": \"python\",\n          \"class\": \"org.apache.zeppelin.python.PythonInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"language\": \"python\",\n            \"editOnDblClick\": false\n          }\n        },\n        {\n          \"name\": \"sql\",\n          \"class\": \"org.apache.zeppelin.python.PythonInterpreterPandasSql\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"language\": \"sql\",\n            \"editOnDblClick\": false\n          }\n        },\n        {\n          \"name\": \"conda\",\n          \"class\": \"org.apache.zeppelin.python.PythonCondaInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"language\": \"sh\",\n            \"editOnDblClick\": false\n          }\n        },\n        {\n          \"name\": \"docker\",\n          \"class\": \"org.apache.zeppelin.python.PythonDockerInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"language\": \"sh\",\n            \"editOnDblClick\": false\n          }\n        }\n      ],\n      \"dependencies\": [],\n      \"option\": {\n        \"remote\": true,\n        \"port\": -1,\n        \"perNote\": \"shared\",\n        \"perUser\": \"shared\",\n        \"isExistingProcess\": false,\n        \"setPermission\": false,\n        \"users\": [],\n        \"isUserImpersonate\": false\n      }\n    },\n    \"2C9WG4M62\": {\n      \"id\": \"2C9WG4M62\",\n      \"name\": \"angular\",\n      \"group\": \"angular\",\n      \"properties\": {},\n      \"status\": \"READY\",\n      \"interpreterGroup\": [\n        {\n          \"name\": \"angular\",\n          \"class\": \"org.apache.zeppelin.angular.AngularInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {\n            \"editOnDblClick\": true\n          }\n        }\n      ],\n      \"dependencies\": [],\n      \"option\": {\n        \"remote\": true,\n        \"port\": -1,\n        \"perNote\": \"shared\",\n        \"perUser\": \"shared\",\n        \"isExistingProcess\": false,\n        \"setPermission\": false,\n        \"users\": [],\n        \"isUserImpersonate\": false\n      }\n    },\n    \"2CCJXAJ4A\": {\n      \"id\": \"2CCJXAJ4A\",\n      \"name\": \"psql\",\n      \"group\": \"psql\",\n      \"properties\": {\n        \"postgresql.password\": \"\",\n        \"postgresql.driver.name\": \"org.postgresql.Driver\",\n        \"postgresql.max.result\": \"1000\",\n        \"postgresql.url\": \"jdbc:postgresql://localhost:5432/\",\n        \"postgresql.user\": \"gpadmin\"\n      },\n      \"status\": \"READY\",\n      \"interpreterGroup\": [\n        {\n          \"name\": \"sql\",\n          \"class\": \"org.apache.zeppelin.postgresql.PostgreSqlInterpreter\",\n          \"defaultInterpreter\": false,\n          \"editor\": {}\n        }\n      ],\n      \"dependencies\": [],\n      \"option\": {\n        \"remote\": true,\n        \"port\": -1,\n        \"perNote\": \"shared\",\n        \"perUser\": \"shared\",\n        \"isExistingProcess\": false,\n        \"setPermission\": false,\n        \"users\": [],\n        \"isUserImpersonate\": false\n      }\n    }\n  },\n  \"interpreterBindings\": {\n    \"2CA1AEZZJ\": [\n      \"2CCM15GZZ\",\n      \"2CB66CEAD\",\n      \"2CAM6X5NB\",\n      \"2C9WG4M62\",\n      \"2CCJXAJ4A\",\n      \"2C9PNCCYW\",\n      \"2CAF88TQ9\",\n      \"2C95MKHGJ\",\n      \"2CB3CXC5U\"\n    ],\n    \"2C8WZ7HUD\": [\n      \"2C9PNCCYW\",\n      \"2CB66CEAD\",\n      \"2CAM6X5NB\",\n      \"2C9WG4M62\",\n      \"2CCM15GZZ\",\n      \"2CCJXAJ4A\",\n      \"2CAF88TQ9\",\n      \"2C95MKHGJ\",\n      \"2CB3CXC5U\"\n    ],\n    \"2BTRWA9EV\": [\n      \"2CB66CEAD\",\n      \"2CAM6X5NB\",\n      \"2C9WG4M62\",\n      \"2CCM15GZZ\",\n      \"2CCJXAJ4A\",\n      \"2C9PNCCYW\",\n      \"2CAF88TQ9\",\n      \"2C95MKHGJ\",\n      \"2CB3CXC5U\"\n    ],\n    \"2C2AUG798\": [\n      \"2CB66CEAD\",\n      \"2CAM6X5NB\",\n      \"2C9WG4M62\",\n      \"2CCM15GZZ\",\n      \"2CCJXAJ4A\",\n      \"2C9PNCCYW\",\n      \"2CAF88TQ9\",\n      \"2C95MKHGJ\",\n      \"2CB3CXC5U\"\n    ],\n    \"2CAFPQHP3\": [\n      \"2C9PNCCYW\",\n      \"2CB66CEAD\",\n      \"2CAM6X5NB\",\n      \"2C9WG4M62\",\n      \"2CCM15GZZ\",\n      \"2CCJXAJ4A\",\n      \"2CAF88TQ9\",\n      \"2C95MKHGJ\",\n      \"2CB3CXC5U\"\n    ],\n    \"2CAKCXMGU\": [\n      \"2C9PNCCYW\",\n      \"2CB66CEAD\",\n      \"2CAM6X5NB\",\n      \"2C9WG4M62\",\n      \"2CCM15GZZ\",\n      \"2CCJXAJ4A\",\n      \"2CAF88TQ9\",\n      \"2C95MKHGJ\",\n      \"2CB3CXC5U\"\n    ],\n    \"2A94M5J1Z\": [\n      \"2CB66CEAD\",\n      \"2CAM6X5NB\",\n      \"2C9WG4M62\",\n      \"2CCM15GZZ\",\n      \"2CCJXAJ4A\",\n      \"2C9PNCCYW\",\n      \"2CAF88TQ9\",\n      \"2C95MKHGJ\",\n      \"2CB3CXC5U\"\n    ]\n  },\n  \"interpreterRepositories\": [\n    {\n      \"id\": \"central\",\n      \"type\": \"default\",\n      \"url\": \"http://repo1.maven.org/maven2/\",\n      \"releasePolicy\": {\n        \"enabled\": true,\n        \"updatePolicy\": \"daily\",\n        \"checksumPolicy\": \"warn\"\n      },\n      \"snapshotPolicy\": {\n        \"enabled\": true,\n        \"updatePolicy\": \"daily\",\n        \"checksumPolicy\": \"warn\"\n      },\n      \"mirroredRepositories\": [],\n      \"repositoryManager\": false\n    },\n    {\n      \"id\": \"local\",\n      \"type\": \"default\",\n      \"url\": \"file:///root/.m2/repository\",\n      \"releasePolicy\": {\n        \"enabled\": true,\n        \"updatePolicy\": \"daily\",\n        \"checksumPolicy\": \"warn\"\n      },\n      \"snapshotPolicy\": {\n        \"enabled\": true,\n        \"updatePolicy\": \"daily\",\n        \"checksumPolicy\": \"warn\"\n      },\n      \"mirroredRepositories\": [],\n      \"repositoryManager\": false\n    }\n  ]\n}"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488097994589_-403269931",
+      "id": "20170226-083314_753436832",
+      "dateCreated": "Feb 26, 2017 8:33:14 AM",
+      "dateStarted": "Feb 26, 2017 1:59:27 PM",
+      "dateFinished": "Feb 26, 2017 1:59:29 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\ncat ./bin/interpreter.cmd\n",
+      "user": "anonymous",
+      "dateUpdated": "Feb 26, 2017 4:46:45 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 334.0,
+              "optionOpen": false
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "@echo off\n\nREM Licensed to the Apache Software Foundation (ASF) under one or more\nREM contributor license agreements.  See the NOTICE file distributed with\nREM this work for additional information regarding copyright ownership.\nREM The ASF licenses this file to You under the Apache License, Version 2.0\nREM (the \"License\"); you may not use this file except in compliance with\nREM the License.  You may obtain a copy of the License at\nREM\nREM    http://www.apache.org/licenses/LICENSE-2.0\nREM\nREM Unless required by applicable law or agreed to in writing, software\nREM distributed under the License is distributed on an \"AS IS\" BASIS,\nREM WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nREM See the License for the specific language governing permissions and\nREM limitations under the License.\n\nsetlocal enableextensions enabledelayedexpansion\n\nset bin\u003d%~dp0\n\n:loop\nif \"%~1\"\u003d\u003d\"\" goto cont\nif /I \"%~1\"\u003d\u003d\"-h\" goto usage\nif /I \"%~1\"\u003d\u003d\"-d\" (\n    set INTERPRETER_DIR\u003d%~2\n    set INTERPRETER_ID\u003d%~n2\n)\nif /I \"%~1\"\u003d\u003d\"-p\" set PORT\u003d%~2\nif /I \"%~1\"\u003d\u003d\"-l\" set LOCAL_INTERPRETER_REPO\u003d%~2\nshift\ngoto loop\n:cont\n\nif \"%PORT%\"\u003d\u003d\"\" goto usage\nif \"%INTERPRETER_DIR%\"\u003d\u003d\"\" goto usage\n\ncall \"%bin%\\common.cmd\"\n\nif exist \"%ZEPPELIN_HOME%\\zeppelin-interpreter\\target\\classes\" (\n    set ZEPPELIN_CLASSPATH\u003d%ZEPPELIN_CLASSPATH%;\"%ZEPPELIN_HOME%\\zeppelin-interpreter\\target\\classes\"\n)\n\nREM add test classes for unittest\nif exist \"%ZEPPELIN_HOME%\\zeppelin-interpreter\\target\\test-classes\" (\n    set ZEPPELIN_CLASSPATH\u003d%ZEPPELIN_CLASSPATH%;\"%ZEPPELIN_HOME%\\zeppelin-interpreter\\target\\test-classes\"\n)\nif exist \"%ZEPPELIN_HOME%\\zeppelin-zengine\\target\\test-classes\" (\n    set ZEPPELIN_CLASSPATH\u003d%ZEPPELIN_CLASSPATH%;\"%ZEPPELIN_HOME%\\zeppelin-zengine\\target\\test-classes\"\n)\n\ncall \"%bin%\\functions.cmd\" ADDJARINDIR \"%ZEPPELIN_HOME%\\zeppelin-interpreter\\target\\lib\"\ncall \"%bin%\\functions.cmd\" ADDJARINDIR \"%ZEPPELIN_HOME%\\lib\\interpreter\"\ncall \"%bin%\\functions.cmd\" ADDJARINDIR \"%INTERPRETER_DIR%\"\n\nset HOSTNAME\u003d%COMPUTERNAME%\nset ZEPPELIN_SERVER\u003dorg.apache.zeppelin.interpreter.remote.RemoteInterpreterServer\n\nset ZEPPELIN_LOGFILE\u003d%ZEPPELIN_LOG_DIR%\\zeppelin-interpreter-%INTERPRETER_ID%-%ZEPPELIN_IDENT_STRING%-%HOSTNAME%.log\n\nif not exist \"%ZEPPELIN_LOG_DIR%\" (\n    echo Log dir doesn\u0027t exist, create %ZEPPELIN_LOG_DIR%\n    mkdir \"%ZEPPELIN_LOG_DIR%\"\n)\n\nif /I \"%INTERPRETER_ID%\"\u003d\u003d\"spark\" (\n    if defined SPARK_HOME (\n        set SPARK_SUBMIT\u003d%SPARK_HOME%\\bin\\spark-submit.cmd\n        for %%d in (\"%ZEPPELIN_HOME%\\interpreter\\spark\\zeppelin-spark*.jar\") do (\n            set SPARK_APP_JAR\u003d%%d\n        )\n        set ZEPPELIN_CLASSPATH\u003d\"!SPARK_APP_JAR!\"\n        \n        for %%d in (\"%SPARK_HOME%\\python\\lib\\py4j-*-src.zip\") do (\n            set py4j\u003d%%d\n        )\n        \n        if not defined PYTHONPATH (\n            set PYTHONPATH\u003d!py4j!;%SPARK_HOME%\\python\n        ) else (\n            set PYTHONPATH\u003d!py4j!;%SPARK_HOME%\\python;%PYTHONPATH%\n        )\n    ) else (\n        if defined HADOOP_HOME if exist \"%HADOOP_HOME%\\bin\\hadoop.cmd\" (\n            for /f \"tokens\u003d*\" %%d in (\u0027\"%HADOOP_HOME%\\bin\\hadoop.cmd\" classpath\u0027) do (\n                set LOCAL_HADOOP_CLASSPATH\u003d%%d\n            )\n            set ZEPPELIN_CLASSPATH\u003d!LOCAL_HADOOP_CLASSPATH!;%ZEPPELIN_CLASSPATH%\n        )\n        \n        call \"%bin%\\functions.cmd\" ADDJARINDIR \"%INTERPRETER_DIR%\\dep\"\n        \n        for %%d in (\"%ZEPPELIN_HOME%\\interpreter\\spark\\pyspark\\py4j-*-src.zip\") do (\n            set py4j\u003d%%d\n        )\n        \n        set PYSPARKPATH\u003d%ZEPPELIN_HOME%\\interpreter\\spark\\pyspark\\pyspark.zip;!py4j!\n        \n        if not defined PYTHONPATH (\n            set PYTHONPATH\u003d!PYSPARKPATH!\n        ) else (\n            set PYTHONPATH\u003d%PYTHONPATH%;!PYSPARKPATH!\n        )\n        \n        set PYSPARKPATH\u003d\n        \n        if defined HADOOP_HOME if not defined HADOOP_CONF_DIR (\n            if exist \"%HADOOP_HOME%\\etc\\hadoop\" (\n                set HADOOP_CONF_DIR\u003d%HADOOP_HOME%\\etc\\hadoop\n            )\n        )\n        \n        if exist \"%HADOOP_CONF_DIR%\" (\n            set ZEPPELIN_CLASSPATH\u003d%ZEPPELIN_CLASSPATH%;\"%HADOOP_CONF_DIR%\"\n        )        \n    )\n)\n\ncall \"%bin%\\functions.cmd\" ADDJARINDIR \"%LOCAL_INTERPRETER_REPO%\"\n\nif not defined ZEPPELIN_CLASSPATH_OVERRIDES (\n    set CLASSPATH\u003d%ZEPPELIN_CLASSPATH%\n) else (\n    set CLASSPATH\u003d%ZEPPELIN_CLASSPATH_OVERRIDES%;%ZEPPELIN_CLASSPATH%\n)\n\nif defined SPARK_SUBMIT (\n    set JAVA_INTP_OPTS\u003d%JAVA_INTP_OPTS% -Dzeppelin.log.file\u003d\u0027%ZEPPELIN_LOGFILE%\u0027\n\n    \"%SPARK_SUBMIT%\" --class %ZEPPELIN_SERVER% --jars %CLASSPATH% --driver-java-options \"!JAVA_INTP_OPTS!\" %SPARK_SUBMIT_OPTIONS% \"%SPARK_APP_JAR%\" %PORT%\n) else (\n    set JAVA_INTP_OPTS\u003d%JAVA_INTP_OPTS% -Dzeppelin.log.file\u003d\"%ZEPPELIN_LOGFILE%\"\n\n    \"%ZEPPELIN_RUNNER%\" !JAVA_INTP_OPTS! %ZEPPELIN_INTP_MEM% -cp %ZEPPELIN_CLASSPATH_OVERRIDES%;%CLASSPATH% %ZEPPELIN_SERVER% %PORT%\n)\n\nexit /b\n\n:usage\necho Usage: %~n0 -p ^\u003cport^\u003e -d ^\u003cinterpreter dir to load^\u003e -l ^\u003clocal interpreter repo dir to load^\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488083496092_1366181890",
+      "id": "20170226-043136_1938564138",
+      "dateCreated": "Feb 26, 2017 4:31:36 AM",
+      "dateStarted": "Feb 26, 2017 4:46:32 AM",
+      "dateFinished": "Feb 26, 2017 4:46:32 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Airbnb",
+  "id": "2CAKCXMGU",
+  "angularObjects": {
+    "2C95MKHGJ:shared_process": [],
+    "2CAM6X5NB:shared_process": [],
+    "2C9WG4M62:shared_process": [],
+    "2C9PNCCYW:shared_process": [],
+    "2CB66CEAD:shared_process": [],
+    "2CAF88TQ9:shared_process": [],
+    "2CB3CXC5U:shared_process": [],
+    "2CCM15GZZ:shared_process": [],
+    "2CCJXAJ4A:shared_process": []
+  },
+  "config": {
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {}
+}

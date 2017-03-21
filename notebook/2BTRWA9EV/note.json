@@ -1,0 +1,208 @@
+{
+  "paragraphs": [
+    {
+      "text": "%sh\nenv | grep -E \"ZEPPELIN|SPARK|HADOOP\" | sort",
+      "user": "anonymous",
+      "dateUpdated": "Feb 25, 2017 2:51:11 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/text",
+        "results": {},
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "HADOOP_CONF_DIR\u003d/usr/hadoop-2.7.3/etc/hadoop\nHADOOP_HOME\u003d/usr/hadoop-2.7.3\nHADOOP_VERSION\u003d2.7.3\nSPARK_DIST_CLASSPATH\u003d/usr/hadoop-2.7.3/etc/hadoop/*:/usr/hadoop-2.7.3/share/hadoop/common/lib/*:/usr/hadoop-2.7.3/share/hadoop/common/*:/usr/hadoop-2.7.3/share/hadoop/hdfs/*:/usr/hadoop-2.7.3/share/hadoop/hdfs/lib/*:/usr/hadoop-2.7.3/share/hadoop/hdfs/*:/usr/hadoop-2.7.3/share/hadoop/yarn/lib/*:/usr/hadoop-2.7.3/share/hadoop/yarn/*:/usr/hadoop-2.7.3/share/hadoop/mapreduce/lib/*:/usr/hadoop-2.7.3/share/hadoop/mapreduce/*:/usr/hadoop-2.7.3/share/hadoop/tools/lib/*\nSPARK_HOME\u003d/usr/spark-2.1.0\nSPARK_PACKAGE\u003dspark-2.1.0-bin-without-hadoop\nSPARK_VERSION\u003d2.1.0\nZEPPELIN_COMMIT\u003dv0.7.0\nZEPPELIN_CONF_DIR\u003d/usr/zeppelin/conf\nZEPPELIN_ENCODING\u003dUTF-8\nZEPPELIN_HOME\u003d/usr/zeppelin\nZEPPELIN_IDENT_STRING\u003d\nZEPPELIN_INTERPRETER_REMOTE_RUNNER\u003dbin/interpreter.sh\nZEPPELIN_INTP_MEM\u003d-Xms1024m -Xmx1024m -XX:MaxPermSize\u003d512m\nZEPPELIN_LOG_DIR\u003d/usr/zeppelin/logs\nZEPPELIN_MEM\u003d-Xms1024m -Xmx1024m -XX:MaxPermSize\u003d512m\nZEPPELIN_NOTEBOOK_DIR\u003d/usr/zeppelin/notebook\nZEPPELIN_PID_DIR\u003d/usr/zeppelin/run\nZEPPELIN_PORT\u003d8080\nZEPPELIN_RUNNER\u003d/usr/jdk1.8.0_112/bin/java\nZEPPELIN_WAR\u003d/usr/zeppelin/zeppelin-web-0.7.0.war\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1469169923986_-1211181225",
+      "id": "20160722-064523_924527479",
+      "dateCreated": "Jul 22, 2016 6:45:23 AM",
+      "dateStarted": "Feb 25, 2017 2:51:11 AM",
+      "dateFinished": "Feb 25, 2017 2:51:11 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nsc.version\nsc.master\nsc.appName\nsc.applicationId\nsc.jars\nsc.getConf.toDebugString\nsc.hadoopConfiguration",
+      "user": "anonymous",
+      "dateUpdated": "Feb 25, 2017 2:51:16 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/text",
+        "results": {},
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\nres0: String \u003d 2.1.0\n\nres1: String \u003d local[*]\n\nres2: String \u003d Zeppelin\n\nres3: String \u003d local-1487991137167\n\nres4: Seq[String] \u003d List(file:/usr/zeppelin/interpreter/spark/zeppelin-spark_2.11-0.7.0.jar)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nres5: String \u003d\nargs\u003d\nhive.metastore.warehouse.dir\u003dfile:/usr/zeppelin/spark-warehouse\nmaster\u003dlocal[*]\nspark.app.id\u003dlocal-1487991137167\nspark.app.name\u003dZeppelin\nspark.driver.extraClassPath\u003d::/usr/zeppelin/interpreter/spark/*:/usr/zeppelin/lib/interpreter/*::/usr/zeppelin/interpreter/spark/zeppelin-spark_2.11-0.7.0.jar\nspark.driver.extraJavaOptions\u003d -Dfile.encoding\u003dUTF-8 -Dlog4j.configuration\u003dfile:///usr/zeppelin/conf/log4j.properties -Dzeppelin.log.file\u003d/usr/zeppelin/logs/zeppelin-interpreter-spark--e2193b8544f5.log\nspark.driver.host\u003d172.17.0.4\nspark.driver.port\u003d42871\nspark.executor.id\u003ddriver\nspark.home\u003d/usr/spark-2.1.0\nspark.jars\u003dfile:/usr/zeppelin/interpreter/spark/zeppelin-spark_2.11-0.7.0.jar\nspark.master\u003dlocal[*]\nspark.repl.class.outputDir\u003d/tmp/spark-52154fdc-47ad-4e26-bd38-3cfa8de602...\nres6: org.apache.hadoop.conf.Configuration \u003d Configuration: core-default.xml, core-site.xml, mapred-default.xml, mapred-site.xml, yarn-default.xml, yarn-site.xml, hdfs-default.xml, hdfs-site.xml\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1469169953418_1749723717",
+      "id": "20160722-064553_1487295533",
+      "dateCreated": "Jul 22, 2016 6:45:53 AM",
+      "dateStarted": "Feb 25, 2017 2:51:16 AM",
+      "dateFinished": "Feb 25, 2017 2:53:23 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python \n\nimport sys\n\nprint(sys.version)",
+      "user": "anonymous",
+      "dateUpdated": "Feb 25, 2017 2:53:38 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/text",
+        "results": {},
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1469169964908_-998152927",
+      "id": "20160722-064604_1357965809",
+      "dateCreated": "Jul 22, 2016 6:46:04 AM",
+      "dateStarted": "Feb 25, 2017 2:53:39 AM",
+      "dateFinished": "Feb 25, 2017 2:53:39 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh pip list ",
+      "user": "anonymous",
+      "dateUpdated": "Feb 25, 2017 2:52:00 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/text",
+        "results": {},
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "DEPRECATION: The default format will switch to columns in the future. You can use --format\u003d(legacy|columns) (or define a format\u003d(legacy|columns) in your pip.conf under the [list] section) to disable this warning.\nlxml (3.7.3)\nnumpy (1.12.0)\npandas (0.19.2)\npandasql (0.7.3)\npip (9.0.1)\npy4j (0.10.4)\npython-dateutil (2.6.0)\npytz (2016.10)\nrequests (2.13.0)\nscipy (0.18.1)\nsetuptools (5.5.1)\nsix (1.10.0)\nSQLAlchemy (1.1.5)\ntushare (0.6.8)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1469169982498_-2090439731",
+      "id": "20160722-064622_1971147917",
+      "dateCreated": "Jul 22, 2016 6:46:22 AM",
+      "dateStarted": "Feb 25, 2017 2:52:00 AM",
+      "dateFinished": "Feb 25, 2017 2:52:08 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1487989963606_-1327634973",
+      "id": "20170225-023243_187905696",
+      "dateCreated": "Feb 25, 2017 2:32:43 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "About this Build",
+  "id": "2BTRWA9EV",
+  "angularObjects": {
+    "2C95MKHGJ:shared_process": [],
+    "2CAM6X5NB:shared_process": [],
+    "2C9WG4M62:shared_process": [],
+    "2CB66CEAD:shared_process": [],
+    "2C9PNCCYW:shared_process": [],
+    "2CAF88TQ9:shared_process": [],
+    "2CB3CXC5U:shared_process": [],
+    "2CCM15GZZ:shared_process": [],
+    "2CCJXAJ4A:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}

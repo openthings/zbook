@@ -1,0 +1,451 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark\n\nprintln(\n\"\"\"%angular\n  \u003cdiv ng-include\u003d\"http://www.baidu.com\"\u003e\u003c/div\u003e\n\"\"\")",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 10:13:11 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "ANGULAR",
+            "data": "  \u003cdiv ng-include\u003d\"http://www.baidu.com\"\u003e\u003c/div\u003e\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488534924404_1591258045",
+      "id": "20170303-095524_801929646",
+      "dateCreated": "Mar 3, 2017 9:55:24 AM",
+      "dateStarted": "Mar 3, 2017 10:13:11 AM",
+      "dateFinished": "Mar 3, 2017 10:13:12 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\n\n#\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n# KChart 股票数据绘制高级K线图，浏览器端适用。\n#\n# Jupyter Notebook中使用，基于Tushare和EChart绘制K线图。\n# By openthings@163.com, 2017-02-18.\n# More Info：https://my.oschina.net/u/2306127/blog\n#\n# 注意:\n#    对于数据延迟或错误一概免责，仅供研究使用。\n#\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\nimport tushare as ts\nimport pandas as pd\n\n#从TuShare获得K线数据，生成ECharts的绘图数据字符串，并返回。\ndef getdata(stock_id,start_date,end_date):\n    datastr \u003d \u0027\u0027\n    \n    df \u003d ts.get_k_data(stock_id, start\u003dstart_date, end\u003dend_date)     #前复权数据\n    for idx in df.index:\n        rowstr \u003d \u0027[\\\u0027%s\\\u0027,%s,%s,%s,%s]\u0027 % (df.ix[idx][\u0027date\u0027], df.ix[idx][\u0027open\u0027], \n                                               df.ix[idx][\u0027close\u0027], df.ix[idx][\u0027low\u0027], \n                                               df.ix[idx][\u0027high\u0027])\n        datastr +\u003d rowstr + \u0027,\u0027\n    datastr \u003d datastr[:-1]\n    name \u003d ts.get_realtime_quotes(stock_id)[\u0027name\u0027][0]     #取股票名称\n    return (datastr,name)\n\n#生成EChart的HTML客户端JavaScipt代码。\ndef kdata(datastr,name):\n    datahead \u003d \"\"\"\n        \u003cdiv id\u003d\"chart\" style\u003d\"width:1080px; height:600px;\"\u003e\u003c/div\u003e \n        \u003cscript\u003e \n        require.config({ paths:{ echarts: \u0027//cdn.bootcss.com/echarts/3.2.3/echarts.min\u0027, } });\n        require([\u0027echarts\u0027],function(ec){\n        var myChart \u003d ec.init(document.getElementById(\u0027chart\u0027));\n        \"\"\"\n    \n    datavar \u003d \u0027var data0 \u003d splitData([%s]);\u0027 % datastr\n    \n    funcstr \u003d \"\"\"\n        function splitData(rawData) {\n            var categoryData \u003d [];\n            var values \u003d []\n            for (var i \u003d 0; i \u003c rawData.length; i++) {\n                categoryData.push(rawData[i].splice(0, 1)[0]);\n                values.push(rawData[i])\n            }\n            return {\n                categoryData: categoryData,\n                values: values\n            };\n        }\n\n        function calculateMA(dayCount) {\n            var result \u003d [];\n            for (var i \u003d 0, len \u003d data0.values.length; i \u003c len; i++) {\n                if (i \u003c dayCount) {\n                    result.push(\u0027-\u0027);\n                    continue;\n                }\n                var sum \u003d 0;\n                for (var j \u003d 0; j \u003c dayCount; j++) {\n                    sum +\u003d data0.values[i - j][1];\n                }\n                result.push((sum / dayCount).toFixed(2));\n            }\n            return result;\n        }\n\n        option \u003d {\n            title: {\n        \"\"\"\n        \n    namestr \u003d \u0027text: \\\u0027%s\\\u0027,\u0027 %name\n    \n    functail \u003d \"\"\"\n            left: 0\n        },\n        tooltip: {\n            trigger: \u0027axis\u0027,\n            axisPointer: {\n                type: \u0027line\u0027\n            }\n        },\n        legend: {\n            data: [\u0027日K\u0027, \u0027MA5\u0027, \u0027MA10\u0027, \u0027MA20\u0027, \u0027MA30\u0027]\n        },\n        grid: {\n            left: \u002710%\u0027,\n            right: \u002710%\u0027,\n            bottom: \u002715%\u0027\n        },\n        xAxis: {\n            type: \u0027category\u0027,\n            data: data0.categoryData,\n            scale: true,\n            boundaryGap : false,\n            axisLine: {onZero: false},\n            splitLine: {show: false},\n            splitNumber: 20,\n            min: \u0027dataMin\u0027,\n            max: \u0027dataMax\u0027\n        },\n        yAxis: {\n            scale: true,\n            splitArea: {\n                show: true\n            }\n        },\n        dataZoom: [\n            {\n                type: \u0027inside\u0027,\n                start: 50,\n                end: 100\n            },\n            {\n                show: true,\n                type: \u0027slider\u0027,\n                y: \u002790%\u0027,\n                start: 50,\n                end: 100\n            }\n        ],\n        series: [\n            {\n                name: \u0027日K\u0027,\n                type: \u0027candlestick\u0027,\n                data: data0.values,\n                markPoint: {\n                    label: {\n                        normal: {\n                            formatter: function (param) {\n                                return param !\u003d null ? Math.round(param.value) : \u0027\u0027;\n                            }\n                        }\n                    },\n                    data: [\n                        {\n                            name: \u0027标点\u0027,\n                            coord: [\u00272013/5/31\u0027, 2300],\n                            value: 2300,\n                            itemStyle: {\n                                normal: {color: \u0027rgb(41,60,85)\u0027}\n                            }\n                        },\n                        {\n                            name: \u0027highest value\u0027,\n                            type: \u0027max\u0027,\n                            valueDim: \u0027highest\u0027\n                        },\n                        {\n                            name: \u0027lowest value\u0027,\n                            type: \u0027min\u0027,\n                            valueDim: \u0027lowest\u0027\n                        },\n                        {\n                            name: \u0027average value on close\u0027,\n                            type: \u0027average\u0027,\n                            valueDim: \u0027close\u0027\n                        }\n                    ],\n                    tooltip: {\n                        formatter: function (param) {\n                            return param.name + \u0027\u003cbr\u003e\u0027 + (param.data.coord || \u0027\u0027);\n                        }\n                    }\n                },\n                markLine: {\n                    symbol: [\u0027none\u0027, \u0027none\u0027],\n                    data: [\n                        [\n                            {\n                                name: \u0027from lowest to highest\u0027,\n                                type: \u0027min\u0027,\n                                valueDim: \u0027lowest\u0027,\n                                symbol: \u0027circle\u0027,\n                                symbolSize: 10,\n                                label: {\n                                    normal: {show: false},\n                                    emphasis: {show: false}\n                                }\n                            },\n                            {\n                                type: \u0027max\u0027,\n                                valueDim: \u0027highest\u0027,\n                                symbol: \u0027circle\u0027,\n                                symbolSize: 10,\n                                label: {\n                                    normal: {show: false},\n                                    emphasis: {show: false}\n                                }\n                            }\n                        ],\n                        {\n                            name: \u0027min line on close\u0027,\n                            type: \u0027min\u0027,\n                            valueDim: \u0027close\u0027\n                        },\n                        {\n                            name: \u0027max line on close\u0027,\n                            type: \u0027max\u0027,\n                            valueDim: \u0027close\u0027\n                        }\n                    ]\n                }\n            },\n            {\n                name: \u0027MA5\u0027,\n                type: \u0027line\u0027,\n                data: calculateMA(5),\n                smooth: true,\n                lineStyle: {\n                    normal: {opacity: 0.5}\n                }\n            },\n            {\n                name: \u0027MA10\u0027,\n                type: \u0027line\u0027,\n                data: calculateMA(10),\n                smooth: true,\n                lineStyle: {\n                    normal: {opacity: 0.5}\n                }\n            },\n            {\n                name: \u0027MA20\u0027,\n                type: \u0027line\u0027,\n                data: calculateMA(20),\n                smooth: true,\n                lineStyle: {\n                    normal: {opacity: 0.5}\n                }\n            },\n            {\n                name: \u0027MA30\u0027,\n                type: \u0027line\u0027,\n                data: calculateMA(30),\n                smooth: true,\n                lineStyle: {\n                    normal: {opacity: 0.5}\n                }\n            },\n\n            ]\n        };\n        myChart.setOption(option);\n            });\n        \u003c/script\u003e\n        \"\"\"\n    return datahead + datavar + funcstr + namestr + functail\n\ndef HTML(strHTML):\n    print(\"%html \"+strHTML)\n",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 10:23:17 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1488534932395_-1198556230",
+      "id": "20170303-095532_785847761",
+      "dateCreated": "Mar 3, 2017 9:55:32 AM",
+      "dateStarted": "Mar 3, 2017 10:23:17 AM",
+      "dateFinished": "Mar 3, 2017 10:23:17 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "# 指定当前分析的股票代码\nStockCode\u003d\u0027300036\u0027\n",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 10:18:11 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1488535937493_-1384513663",
+      "id": "20170303-101217_2034328710",
+      "dateCreated": "Mar 3, 2017 10:12:17 AM",
+      "dateStarted": "Mar 3, 2017 10:18:11 AM",
+      "dateFinished": "Mar 3, 2017 10:18:11 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "# 获取K线图数据，指定股票代码、开始日期、结束日期。\ndatastr,name \u003d getdata(stock_id\u003dStockCode,start_date\u003d\u00272017-01-01\u0027 , end_date\u003d\u00272017-02-22\u0027)",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 10:20:16 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1488536291869_-1086259933",
+      "id": "20170303-101811_1567058428",
+      "dateCreated": "Mar 3, 2017 10:18:11 AM",
+      "dateStarted": "Mar 3, 2017 10:20:16 AM",
+      "dateFinished": "Mar 3, 2017 10:20:22 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "绘制K线图",
+      "text": "HTML(kdata(datastr,name))",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 10:24:19 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\n        \u003cdiv id\u003d\"chart\" style\u003d\"width:1080px; height:600px;\"\u003e\u003c/div\u003e \n        \u003cscript\u003e \n        require.config({ paths:{ echarts: \u0027//cdn.bootcss.com/echarts/3.2.3/echarts.min\u0027, } });\n        require([\u0027echarts\u0027],function(ec){\n        var myChart \u003d ec.init(document.getElementById(\u0027chart\u0027));\n        var data0 \u003d splitData([[\u00272017-01-03\u0027,17.0,17.23,17.0,17.39],[\u00272017-01-04\u0027,17.3,17.41,17.13,17.51],[\u00272017-01-05\u0027,17.49,17.41,17.25,17.59],[\u00272017-01-06\u0027,17.22,17.1,16.8,17.35],[\u00272017-01-09\u0027,16.98,17.11,16.7,17.16],[\u00272017-01-10\u0027,17.03,17.0,16.96,17.34],[\u00272017-01-11\u0027,16.8,17.1,16.75,17.29],[\u00272017-01-12\u0027,17.1,17.18,17.1,17.49],[\u00272017-01-13\u0027,17.11,17.05,16.92,17.44],[\u00272017-01-16\u0027,17.03,15.48,15.35,17.03],[\u00272017-01-17\u0027,15.56,15.7,14.8,15.95],[\u00272017-01-18\u0027,15.5,15.45,15.4,15.72],[\u00272017-01-19\u0027,15.48,15.51,15.2,15.64],[\u00272017-01-20\u0027,15.51,16.0,15.51,16.18],[\u00272017-01-23\u0027,16.1,16.12,16.04,16.49],[\u00272017-01-24\u0027,16.12,15.9,15.83,16.27],[\u00272017-01-25\u0027,15.71,15.9,15.71,16.05],[\u00272017-01-26\u0027,16.19,16.15,15.9,16.24],[\u00272017-02-03\u0027,16.11,16.17,16.01,16.39],[\u00272017-02-06\u0027,16.17,16.38,16.17,16.4],[\u00272017-02-07\u0027,16.38,16.06,15.93,16.38],[\u00272017-02-08\u0027,16.04,16.18,15.88,16.22],[\u00272017-02-09\u0027,16.22,16.33,16.14,16.34],[\u00272017-02-10\u0027,16.3,16.1,16.03,16.33],[\u00272017-02-13\u0027,16.05,16.23,15.94,16.3],[\u00272017-02-14\u0027,16.37,16.54,16.37,17.16],[\u00272017-02-15\u0027,16.4,16.19,16.13,16.47],[\u00272017-02-16\u0027,16.13,16.32,16.13,16.33],[\u00272017-02-17\u0027,16.32,15.96,15.96,16.32],[\u00272017-02-20\u0027,16.01,16.0,15.68,16.08],[\u00272017-02-21\u0027,16.0,16.27,15.9,16.42],[\u00272017-02-22\u0027,16.34,16.33,16.14,16.35]]);\n        function splitData(rawData) {\n            var categoryData \u003d [];\n            var values \u003d []\n            for (var i \u003d 0; i \u003c rawData.length; i++) {\n                categoryData.push(rawData[i].splice(0, 1)[0]);\n                values.push(rawData[i])\n            }\n            return {\n                categoryData: categoryData,\n                values: values\n            };\n        }\n\n        function calculateMA(dayCount) {\n            var result \u003d [];\n            for (var i \u003d 0, len \u003d data0.values.length; i \u003c len; i++) {\n                if (i \u003c dayCount) {\n                    result.push(\u0027-\u0027);\n                    continue;\n                }\n                var sum \u003d 0;\n                for (var j \u003d 0; j \u003c dayCount; j++) {\n                    sum +\u003d data0.values[i - j][1];\n                }\n                result.push((sum / dayCount).toFixed(2));\n            }\n            return result;\n        }\n\n        option \u003d {\n            title: {\n        text: \u0027超图软件\u0027,\n            left: 0\n        },\n        tooltip: {\n            trigger: \u0027axis\u0027,\n            axisPointer: {\n                type: \u0027line\u0027\n            }\n        },\n        legend: {\n            data: [\u0027日K\u0027, \u0027MA5\u0027, \u0027MA10\u0027, \u0027MA20\u0027, \u0027MA30\u0027]\n        },\n        grid: {\n            left: \u002710%\u0027,\n            right: \u002710%\u0027,\n            bottom: \u002715%\u0027\n        },\n        xAxis: {\n            type: \u0027category\u0027,\n            data: data0.categoryData,\n            scale: true,\n            boundaryGap : false,\n            axisLine: {onZero: false},\n            splitLine: {show: false},\n            splitNumber: 20,\n            min: \u0027dataMin\u0027,\n            max: \u0027dataMax\u0027\n        },\n        yAxis: {\n            scale: true,\n            splitArea: {\n                show: true\n            }\n        },\n        dataZoom: [\n            {\n                type: \u0027inside\u0027,\n                start: 50,\n                end: 100\n            },\n            {\n                show: true,\n                type: \u0027slider\u0027,\n                y: \u002790%\u0027,\n                start: 50,\n                end: 100\n            }\n        ],\n        series: [\n            {\n                name: \u0027日K\u0027,\n                type: \u0027candlestick\u0027,\n                data: data0.values,\n                markPoint: {\n                    label: {\n                        normal: {\n                            formatter: function (param) {\n                                return param !\u003d null ? Math.round(param.value) : \u0027\u0027;\n                            }\n                        }\n                    },\n                    data: [\n                        {\n                            name: \u0027标点\u0027,\n                            coord: [\u00272013/5/31\u0027, 2300],\n                            value: 2300,\n                            itemStyle: {\n                                normal: {color: \u0027rgb(41,60,85)\u0027}\n                            }\n                        },\n                        {\n                            name: \u0027highest value\u0027,\n                            type: \u0027max\u0027,\n                            valueDim: \u0027highest\u0027\n                        },\n                        {\n                            name: \u0027lowest value\u0027,\n                            type: \u0027min\u0027,\n                            valueDim: \u0027lowest\u0027\n                        },\n                        {\n                            name: \u0027average value on close\u0027,\n                            type: \u0027average\u0027,\n                            valueDim: \u0027close\u0027\n                        }\n                    ],\n                    tooltip: {\n                        formatter: function (param) {\n                            return param.name + \u0027\u003cbr\u003e\u0027 + (param.data.coord || \u0027\u0027);\n                        }\n                    }\n                },\n                markLine: {\n                    symbol: [\u0027none\u0027, \u0027none\u0027],\n                    data: [\n                        [\n                            {\n                                name: \u0027from lowest to highest\u0027,\n                                type: \u0027min\u0027,\n                                valueDim: \u0027lowest\u0027,\n                                symbol: \u0027circle\u0027,\n                                symbolSize: 10,\n                                label: {\n                                    normal: {show: false},\n                                    emphasis: {show: false}\n                                }\n                            },\n                            {\n                                type: \u0027max\u0027,\n                                valueDim: \u0027highest\u0027,\n                                symbol: \u0027circle\u0027,\n                                symbolSize: 10,\n                                label: {\n                                    normal: {show: false},\n                                    emphasis: {show: false}\n                                }\n                            }\n                        ],\n                        {\n                            name: \u0027min line on close\u0027,\n                            type: \u0027min\u0027,\n                            valueDim: \u0027close\u0027\n                        },\n                        {\n                            name: \u0027max line on close\u0027,\n                            type: \u0027max\u0027,\n                            valueDim: \u0027close\u0027\n                        }\n                    ]\n                }\n            },\n            {\n                name: \u0027MA5\u0027,\n                type: \u0027line\u0027,\n                data: calculateMA(5),\n                smooth: true,\n                lineStyle: {\n                    normal: {opacity: 0.5}\n                }\n            },\n            {\n                name: \u0027MA10\u0027,\n                type: \u0027line\u0027,\n                data: calculateMA(10),\n                smooth: true,\n                lineStyle: {\n                    normal: {opacity: 0.5}\n                }\n            },\n            {\n                name: \u0027MA20\u0027,\n                type: \u0027line\u0027,\n                data: calculateMA(20),\n                smooth: true,\n                lineStyle: {\n                    normal: {opacity: 0.5}\n                }\n            },\n            {\n                name: \u0027MA30\u0027,\n                type: \u0027line\u0027,\n                data: calculateMA(30),\n                smooth: true,\n                lineStyle: {\n                    normal: {opacity: 0.5}\n                }\n            },\n\n            ]\n        };\n        myChart.setOption(option);\n            });\n        \u003c/script\u003e\n        \n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488536306424_426218641",
+      "id": "20170303-101826_1051270873",
+      "dateCreated": "Mar 3, 2017 10:18:26 AM",
+      "dateStarted": "Mar 3, 2017 10:24:19 AM",
+      "dateFinished": "Mar 3, 2017 10:24:19 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "kdata(datastr,name)\n",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 10:23:36 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u0027\\n        \u003cdiv id\u003d\"chart\" style\u003d\"width:1080px; height:600px;\"\u003e\u003c/div\u003e \\n        \u003cscript\u003e \\n        require.config({ paths:{ echarts: \\\u0027//cdn.bootcss.com/echarts/3.2.3/echarts.min\\\u0027, } });\\n        require([\\\u0027echarts\\\u0027],function(ec){\\n        var myChart \u003d ec.init(document.getElementById(\\\u0027chart\\\u0027));\\n        var data0 \u003d splitData([[\\\u00272017-01-03\\\u0027,17.0,17.23,17.0,17.39],[\\\u00272017-01-04\\\u0027,17.3,17.41,17.13,17.51],[\\\u00272017-01-05\\\u0027,17.49,17.41,17.25,17.59],[\\\u00272017-01-06\\\u0027,17.22,17.1,16.8,17.35],[\\\u00272017-01-09\\\u0027,16.98,17.11,16.7,17.16],[\\\u00272017-01-10\\\u0027,17.03,17.0,16.96,17.34],[\\\u00272017-01-11\\\u0027,16.8,17.1,16.75,17.29],[\\\u00272017-01-12\\\u0027,17.1,17.18,17.1,17.49],[\\\u00272017-01-13\\\u0027,17.11,17.05,16.92,17.44],[\\\u00272017-01-16\\\u0027,17.03,15.48,15.35,17.03],[\\\u00272017-01-17\\\u0027,15.56,15.7,14.8,15.95],[\\\u00272017-01-18\\\u0027,15.5,15.45,15.4,15.72],[\\\u00272017-01-19\\\u0027,15.48,15.51,15.2,15.64],[\\\u00272017-01-20\\\u0027,15.51,16.0,15.51,16.18],[\\\u00272017-01-23\\\u0027,16.1,16.12,16.04,16.49],[\\\u00272017-01-24\\\u0027,16.12,15.9,15.83,16.27],[\\\u00272017-01-25\\\u0027,15.71,15.9,15.71,16.05],[\\\u00272017-01-26\\\u0027,16.19,16.15,15.9,16.24],[\\\u00272017-02-03\\\u0027,16.11,16.17,16.01,16.39],[\\\u00272017-02-06\\\u0027,16.17,16.38,16.17,16.4],[\\\u00272017-02-07\\\u0027,16.38,16.06,15.93,16.38],[\\\u00272017-02-08\\\u0027,16.04,16.18,15.88,16.22],[\\\u00272017-02-09\\\u0027,16.22,16.33,16.14,16.34],[\\\u00272017-02-10\\\u0027,16.3,16.1,16.03,16.33],[\\\u00272017-02-13\\\u0027,16.05,16.23,15.94,16.3],[\\\u00272017-02-14\\\u0027,16.37,16.54,16.37,17.16],[\\\u00272017-02-15\\\u0027,16.4,16.19,16.13,16.47],[\\\u00272017-02-16\\\u0027,16.13,16.32,16.13,16.33],[\\\u00272017-02-17\\\u0027,16.32,15.96,15.96,16.32],[\\\u00272017-02-20\\\u0027,16.01,16.0,15.68,16.08],[\\\u00272017-02-21\\\u0027,16.0,16.27,15.9,16.42],[\\\u00272017-02-22\\\u0027,16.34,16.33,16.14,16.35]]);\\n        function splitData(rawData) {\\n            var categoryData \u003d [];\\n            var values \u003d []\\n            for (var i \u003d 0; i \u003c rawData.length; i++) {\\n                categoryData.push(rawData[i].splice(0, 1)[0]);\\n                values.push(rawData[i])\\n            }\\n            return {\\n                categoryData: categoryData,\\n                values: values\\n            };\\n        }\\n\\n        function calculateMA(dayCount) {\\n            var result \u003d [];\\n            for (var i \u003d 0, len \u003d data0.values.length; i \u003c len; i++) {\\n                if (i \u003c dayCount) {\\n                    result.push(\\\u0027-\\\u0027);\\n                    continue;\\n                }\\n                var sum \u003d 0;\\n                for (var j \u003d 0; j \u003c dayCount; j++) {\\n                    sum +\u003d data0.values[i - j][1];\\n                }\\n                result.push((sum / dayCount).toFixed(2));\\n            }\\n            return result;\\n        }\\n\\n        option \u003d {\\n            title: {\\n        text: \\\u0027超图软件\\\u0027,\\n            left: 0\\n        },\\n        tooltip: {\\n            trigger: \\\u0027axis\\\u0027,\\n            axisPointer: {\\n                type: \\\u0027line\\\u0027\\n            }\\n        },\\n        legend: {\\n            data: [\\\u0027日K\\\u0027, \\\u0027MA5\\\u0027, \\\u0027MA10\\\u0027, \\\u0027MA20\\\u0027, \\\u0027MA30\\\u0027]\\n        },\\n        grid: {\\n            left: \\\u002710%\\\u0027,\\n            right: \\\u002710%\\\u0027,\\n            bottom: \\\u002715%\\\u0027\\n        },\\n        xAxis: {\\n            type: \\\u0027category\\\u0027,\\n            data: data0.categoryData,\\n            scale: true,\\n            boundaryGap : false,\\n            axisLine: {onZero: false},\\n            splitLine: {show: false},\\n            splitNumber: 20,\\n            min: \\\u0027dataMin\\\u0027,\\n            max: \\\u0027dataMax\\\u0027\\n        },\\n        yAxis: {\\n            scale: true,\\n            splitArea: {\\n                show: true\\n            }\\n        },\\n        dataZoom: [\\n            {\\n                type: \\\u0027inside\\\u0027,\\n                start: 50,\\n                end: 100\\n            },\\n            {\\n                show: true,\\n                type: \\\u0027slider\\\u0027,\\n                y: \\\u002790%\\\u0027,\\n                start: 50,\\n                end: 100\\n            }\\n        ],\\n        series: [\\n            {\\n                name: \\\u0027日K\\\u0027,\\n                type: \\\u0027candlestick\\\u0027,\\n                data: data0.values,\\n                markPoint: {\\n                    label: {\\n                        normal: {\\n                            formatter: function (param) {\\n                                return param !\u003d null ? Math.round(param.value) : \\\u0027\\\u0027;\\n                            }\\n                        }\\n                    },\\n                    data: [\\n                        {\\n                            name: \\\u0027标点\\\u0027,\\n                            coord: [\\\u00272013/5/31\\\u0027, 2300],\\n                            value: 2300,\\n                            itemStyle: {\\n                                normal: {color: \\\u0027rgb(41,60,85)\\\u0027}\\n                            }\\n                        },\\n                        {\\n                            name: \\\u0027highest value\\\u0027,\\n                            type: \\\u0027max\\\u0027,\\n                            valueDim: \\\u0027highest\\\u0027\\n                        },\\n                        {\\n                            name: \\\u0027lowest value\\\u0027,\\n                            type: \\\u0027min\\\u0027,\\n                            valueDim: \\\u0027lowest\\\u0027\\n                        },\\n                        {\\n                            name: \\\u0027average value on close\\\u0027,\\n                            type: \\\u0027average\\\u0027,\\n                            valueDim: \\\u0027close\\\u0027\\n                        }\\n                    ],\\n                    tooltip: {\\n                        formatter: function (param) {\\n                            return param.name + \\\u0027\u003cbr\u003e\\\u0027 + (param.data.coord || \\\u0027\\\u0027);\\n                        }\\n                    }\\n                },\\n                markLine: {\\n                    symbol: [\\\u0027none\\\u0027, \\\u0027none\\\u0027],\\n                    data: [\\n                        [\\n                            {\\n                                name: \\\u0027from lowest to highest\\\u0027,\\n                                type: \\\u0027min\\\u0027,\\n                                valueDim: \\\u0027lowest\\\u0027,\\n                                symbol: \\\u0027circle\\\u0027,\\n                                symbolSize: 10,\\n                                label: {\\n                                    normal: {show: false},\\n                                    emphasis: {show: false}\\n                                }\\n                            },\\n                            {\\n                                type: \\\u0027max\\\u0027,\\n                                valueDim: \\\u0027highest\\\u0027,\\n                                symbol: \\\u0027circle\\\u0027,\\n                                symbolSize: 10,\\n                                label: {\\n                                    normal: {show: false},\\n                                    emphasis: {show: false}\\n                                }\\n                            }\\n                        ],\\n                        {\\n                            name: \\\u0027min line on close\\\u0027,\\n                            type: \\\u0027min\\\u0027,\\n                            valueDim: \\\u0027close\\\u0027\\n                        },\\n                        {\\n                            name: \\\u0027max line on close\\\u0027,\\n                            type: \\\u0027max\\\u0027,\\n                            valueDim: \\\u0027close\\\u0027\\n                        }\\n                    ]\\n                }\\n            },\\n            {\\n                name: \\\u0027MA5\\\u0027,\\n                type: \\\u0027line\\\u0027,\\n                data: calculateMA(5),\\n                smooth: true,\\n                lineStyle: {\\n                    normal: {opacity: 0.5}\\n                }\\n            },\\n            {\\n                name: \\\u0027MA10\\\u0027,\\n                type: \\\u0027line\\\u0027,\\n                data: calculateMA(10),\\n                smooth: true,\\n                lineStyle: {\\n                    normal: {opacity: 0.5}\\n                }\\n            },\\n            {\\n                name: \\\u0027MA20\\\u0027,\\n                type: \\\u0027line\\\u0027,\\n                data: calculateMA(20),\\n                smooth: true,\\n                lineStyle: {\\n                    normal: {opacity: 0.5}\\n                }\\n            },\\n            {\\n                name: \\\u0027MA30\\\u0027,\\n                type: \\\u0027line\\\u0027,\\n                data: calculateMA(30),\\n                smooth: true,\\n                lineStyle: {\\n                    normal: {opacity: 0.5}\\n                }\\n            },\\n\\n            ]\\n        };\\n        myChart.setOption(option);\\n            });\\n        \u003c/script\u003e\\n        \u0027\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488536430452_2125085894",
+      "id": "20170303-102030_1760074232",
+      "dateCreated": "Mar 3, 2017 10:20:30 AM",
+      "dateStarted": "Mar 3, 2017 10:23:36 AM",
+      "dateFinished": "Mar 3, 2017 10:23:37 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "str \u003d \"\"\"\n\u003cscript src\u003d\"echarts.min.js\"\u003e\u003c/script\u003e\n    \u003cdiv id\u003d\"main\" style\u003d\"width: 600px;height:400px;\"\u003e\u003c/div\u003e\n    \u003cscript type\u003d\"text/javascript\"\u003e\n        // 基于准备好的dom，初始化echarts实例\n        var myChart \u003d echarts.init(document.getElementById(\u0027main\u0027));\n\n        // 指定图表的配置项和数据\n        var option \u003d {\n            title: {\n                text: \u0027ECharts 入门示例\u0027\n            },\n            tooltip: {},\n            legend: {\n                data:[\u0027销量\u0027]\n            },\n            xAxis: {\n                data: [\"衬衫\",\"羊毛衫\",\"雪纺衫\",\"裤子\",\"高跟鞋\",\"袜子\"]\n            },\n            yAxis: {},\n            series: [{\n                name: \u0027销量\u0027,\n                type: \u0027bar\u0027,\n                data: [5, 20, 36, 10, 10, 20]\n            }]\n        };\n\n        // 使用刚指定的配置项和数据显示图表。\n        myChart.setOption(option);\n    \u003c/script\u003e\n\"\"\"",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 10:29:05 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1488536534402_-236801116",
+      "id": "20170303-102214_555156973",
+      "dateCreated": "Mar 3, 2017 10:22:14 AM",
+      "dateStarted": "Mar 3, 2017 10:29:05 AM",
+      "dateFinished": "Mar 3, 2017 10:29:05 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "print(\"%html \"+str)",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 10:29:07 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\n\u003cscript src\u003d\"echarts.min.js\"\u003e\u003c/script\u003e\n    \u003cdiv id\u003d\"main\" style\u003d\"width: 600px;height:400px;\"\u003e\u003c/div\u003e\n    \u003cscript type\u003d\"text/javascript\"\u003e\n        // 基于准备好的dom，初始化echarts实例\n        var myChart \u003d echarts.init(document.getElementById(\u0027main\u0027));\n\n        // 指定图表的配置项和数据\n        var option \u003d {\n            title: {\n                text: \u0027ECharts 入门示例\u0027\n            },\n            tooltip: {},\n            legend: {\n                data:[\u0027销量\u0027]\n            },\n            xAxis: {\n                data: [\"衬衫\",\"羊毛衫\",\"雪纺衫\",\"裤子\",\"高跟鞋\",\"袜子\"]\n            },\n            yAxis: {},\n            series: [{\n                name: \u0027销量\u0027,\n                type: \u0027bar\u0027,\n                data: [5, 20, 36, 10, 10, 20]\n            }]\n        };\n\n        // 使用刚指定的配置项和数据显示图表。\n        myChart.setOption(option);\n    \u003c/script\u003e\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488536884317_-1507504140",
+      "id": "20170303-102804_1668277767",
+      "dateCreated": "Mar 3, 2017 10:28:04 AM",
+      "dateStarted": "Mar 3, 2017 10:29:07 AM",
+      "dateFinished": "Mar 3, 2017 10:29:07 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%angular\n\n\u003cform class\u003d\"form-inline\"\u003e\n  \u003cdiv class\u003d\"form-group\"\u003e\n    \u003clabel for\u003d\"paragraphId\"\u003eParagraph Id: \u003c/label\u003e\n    \u003cinput type\u003d\"text\" class\u003d\"form-control\" id\u003d\"paragraphId\" placeholder\u003d\"Paragraph Id ...\" ng-model\u003d\"paragraph\"\u003e\u003c/input\u003e\n  \u003c/div\u003e\n  \u003cbutton type\u003d\"submit\" class\u003d\"btn btn-primary\" ng-click\u003d\"z.runParagraph(paragraph)\"\u003e Run Paragraph\u003c/button\u003e\n\u003c/form\u003e",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 10:32:33 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/undefined",
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "ANGULAR",
+            "data": "\u003cform class\u003d\"form-inline\"\u003e\n  \u003cdiv class\u003d\"form-group\"\u003e\n    \u003clabel for\u003d\"paragraphId\"\u003eParagraph Id: \u003c/label\u003e\n    \u003cinput type\u003d\"text\" class\u003d\"form-control\" id\u003d\"paragraphId\" placeholder\u003d\"Paragraph Id ...\" ng-model\u003d\"paragraph\"\u003e\u003c/input\u003e\n  \u003c/div\u003e\n  \u003cbutton type\u003d\"submit\" class\u003d\"btn btn-primary\" ng-click\u003d\"z.runParagraph(paragraph)\"\u003e Run Paragraph\u003c/button\u003e\n\u003c/form\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488536851351_-301947918",
+      "id": "20170303-102731_2127919680",
+      "dateCreated": "Mar 3, 2017 10:27:31 AM",
+      "dateStarted": "Mar 3, 2017 10:32:22 AM",
+      "dateFinished": "Mar 3, 2017 10:32:25 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%angular\n\u003cscript src\u003d\"echarts.min.js\"\u003e\u003c/script\u003e\n    \u003cdiv id\u003d\"map\" style\u003d\"width: 600px;height:400px;\"\u003e\u003c/div\u003e\n    \u003cscript type\u003d\"text/javascript\"\u003e\n        // 基于准备好的dom，初始化echarts实例\n        var myChart \u003d echarts.init(document.getElementById(\u0027map\u0027));\n\n        // 指定图表的配置项和数据\n        var option \u003d {\n            title: {\n                text: \u0027ECharts 入门示例\u0027\n            },\n            tooltip: {},\n            legend: {\n                data:[\u0027销量\u0027]\n            },\n            xAxis: {\n                data: [\"衬衫\",\"羊毛衫\",\"雪纺衫\",\"裤子\",\"高跟鞋\",\"袜子\"]\n            },\n            yAxis: {},\n            series: [{\n                name: \u0027销量\u0027,\n                type: \u0027bar\u0027,\n                data: [5, 20, 36, 10, 10, 20]\n            }]\n        };\n\n        // 使用刚指定的配置项和数据显示图表。\n        myChart.setOption(option);\n    \u003c/script\u003e",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 10:35:28 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "ANGULAR",
+            "data": "\u003cscript src\u003d\"echarts.min.js\"\u003e\u003c/script\u003e\n    \u003cdiv id\u003d\"map\" style\u003d\"width: 600px;height:400px;\"\u003e\u003c/div\u003e\n    \u003cscript type\u003d\"text/javascript\"\u003e\n        // 基于准备好的dom，初始化echarts实例\n        var myChart \u003d echarts.init(document.getElementById(\u0027map\u0027));\n\n        // 指定图表的配置项和数据\n        var option \u003d {\n            title: {\n                text: \u0027ECharts 入门示例\u0027\n            },\n            tooltip: {},\n            legend: {\n                data:[\u0027销量\u0027]\n            },\n            xAxis: {\n                data: [\"衬衫\",\"羊毛衫\",\"雪纺衫\",\"裤子\",\"高跟鞋\",\"袜子\"]\n            },\n            yAxis: {},\n            series: [{\n                name: \u0027销量\u0027,\n                type: \u0027bar\u0027,\n                data: [5, 20, 36, 10, 10, 20]\n            }]\n        };\n\n        // 使用刚指定的配置项和数据显示图表。\n        myChart.setOption(option);\n    \u003c/script\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488537142226_-513329950",
+      "id": "20170303-103222_1576394742",
+      "dateCreated": "Mar 3, 2017 10:32:22 AM",
+      "dateStarted": "Mar 3, 2017 10:35:28 AM",
+      "dateFinished": "Mar 3, 2017 10:35:28 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\npip install bokeh\n",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 10:49:08 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Collecting bokeh\n  Downloading bokeh-0.12.4.tar.gz (5.6MB)\nRequirement already satisfied: six\u003e\u003d1.5.2 in /usr/local/lib/python3.4/dist-packages (from bokeh)\nRequirement already satisfied: requests\u003e\u003d1.2.3 in /usr/local/lib/python3.4/dist-packages (from bokeh)\nCollecting PyYAML\u003e\u003d3.10 (from bokeh)\n  Downloading PyYAML-3.12.tar.gz (253kB)\nRequirement already satisfied: python-dateutil\u003e\u003d2.1 in /usr/local/lib/python3.4/dist-packages (from bokeh)\nCollecting Jinja2\u003e\u003d2.7 (from bokeh)\n  Downloading Jinja2-2.9.5-py2.py3-none-any.whl (340kB)\nRequirement already satisfied: numpy\u003e\u003d1.7.1 in /usr/local/lib/python3.4/dist-packages (from bokeh)\nCollecting tornado\u003e\u003d4.3 (from bokeh)\n  Downloading tornado-4.4.2.tar.gz (460kB)\nCollecting MarkupSafe\u003e\u003d0.23 (from Jinja2\u003e\u003d2.7-\u003ebokeh)\n  Downloading MarkupSafe-0.23.tar.gz\nCollecting backports_abc\u003e\u003d0.4 (from tornado\u003e\u003d4.3-\u003ebokeh)\n  Downloading backports_abc-0.5-py2.py3-none-any.whl\nInstalling collected packages: PyYAML, MarkupSafe, Jinja2, backports-abc, tornado, bokeh\n  Running setup.py install for PyYAML: started\n    Running setup.py install for PyYAML: finished with status \u0027done\u0027\n  Running setup.py install for MarkupSafe: started\n    Running setup.py install for MarkupSafe: finished with status \u0027done\u0027\n  Running setup.py install for tornado: started\n    Running setup.py install for tornado: finished with status \u0027done\u0027\n  Running setup.py install for bokeh: started\n    Running setup.py install for bokeh: finished with status \u0027done\u0027\nSuccessfully installed Jinja2-2.9.5 MarkupSafe-0.23 PyYAML-3.12 backports-abc-0.5 bokeh-0.12.4 tornado-4.4.2\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488537181416_1810214630",
+      "id": "20170303-103301_1337553347",
+      "dateCreated": "Mar 3, 2017 10:33:01 AM",
+      "dateStarted": "Mar 3, 2017 10:49:08 AM",
+      "dateFinished": "Mar 3, 2017 10:49:29 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\n\nfrom bokeh.plotting import figure, output_file, show\n\n# prepare some data\nx \u003d [1, 2, 3, 4, 5]\ny \u003d [6, 7, 2, 4, 5]\n\n# output to static HTML file\noutput_file(\"lines.html\")\n\n# create a new plot with a title and axis labels\np \u003d figure(title\u003d\"simple line example\", x_axis_label\u003d\u0027x\u0027, y_axis_label\u003d\u0027y\u0027)\n\n# add a line renderer with legend and line thickness\np.line(x, y, legend\u003d\"Temp.\", line_width\u003d2)\n\n# show the results\nshow(p)\n",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 10:50:19 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "... ... ... ... GlyphRenderer(id\u003d\u002757034cf1-6b73-4897-8020-2863ec388c14\u0027, ...)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488538148554_760385358",
+      "id": "20170303-104908_524976521",
+      "dateCreated": "Mar 3, 2017 10:49:08 AM",
+      "dateStarted": "Mar 3, 2017 10:50:19 AM",
+      "dateFinished": "Mar 3, 2017 10:50:22 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\n",
+      "user": "anonymous",
+      "dateUpdated": "Mar 3, 2017 10:50:19 AM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1488538219467_1052717901",
+      "id": "20170303-105019_1205106653",
+      "dateCreated": "Mar 3, 2017 10:50:19 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "300036/TS300036K线图",
+  "id": "2CB1HE258",
+  "angularObjects": {
+    "2C95MKHGJ:shared_process": [],
+    "2CAM6X5NB:shared_process": [],
+    "2C9WG4M62:shared_process": [],
+    "2C9PNCCYW:shared_process": [],
+    "2CB66CEAD:shared_process": [],
+    "2CAF88TQ9:shared_process": [],
+    "2CB3CXC5U:shared_process": [],
+    "2CCM15GZZ:shared_process": [],
+    "2CCJXAJ4A:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}

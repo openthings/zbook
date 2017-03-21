@@ -1,0 +1,71 @@
+{
+  "paragraphs": [
+    {
+      "text": "%angular\n\u003chighchart id\u003d\"chart1\" config\u003d\"chartconfig \u003ehighchart\u003chighchart\u003e",
+      "user": "anonymous",
+      "dateUpdated": "Mar 4, 2017 7:29:26 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "editOnDblClick": true,
+          "language": "text"
+        },
+        "editorMode": "ace/mode/undefined",
+        "editorHide": false,
+        "tableHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "ANGULAR",
+            "data": "\u003chighchart id\u003d\"chart1\" config\u003d\"chartconfig \u003ehighchart\u003chighchart\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1488552263390_694419355",
+      "id": "20170303-144423_1203521848",
+      "dateCreated": "Mar 3, 2017 2:44:23 PM",
+      "dateStarted": "Mar 4, 2017 7:29:24 AM",
+      "dateFinished": "Mar 4, 2017 7:29:24 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1488552310175_1680038768",
+      "id": "20170303-144510_1513011242",
+      "dateCreated": "Mar 3, 2017 2:45:10 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "HighChart",
+  "id": "2C9X4WW28",
+  "angularObjects": {
+    "2C95MKHGJ:shared_process": [],
+    "2C9WG4M62:shared_process": [],
+    "2CAM6X5NB:shared_process": [],
+    "2CB66CEAD:shared_process": [],
+    "2C9PNCCYW:shared_process": [],
+    "2CAF88TQ9:shared_process": [],
+    "2CB3CXC5U:shared_process": [],
+    "2CCM15GZZ:shared_process": [],
+    "2CCJXAJ4A:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}
